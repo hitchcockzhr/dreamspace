@@ -10,11 +10,11 @@ exports.initLocals = function(req, res, next) {
 	var locals = res.locals;
 
 //This is where you add links to other pages
+//can add any page at any time
 	locals.navLinks = [
 		{ label: 'Home',		key: 'home',		href: '/' },
 		{ label: 'Blog',		key: 'blog',		href: '/blog' },
-		{ label: 'Gallery',		key: 'gallery',		href: '/gallery' },
-		{ label: 'TEST',		key: 'newpage',		href: '/newpage' }
+		{ label: 'Gallery',		key: 'gallery',		href: '/gallery' }
 	];
 
 	locals.user = req.user;
