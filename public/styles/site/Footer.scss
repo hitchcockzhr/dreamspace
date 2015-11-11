@@ -1,0 +1,97 @@
+$font-one: Butterfly Ball Regular;
+$primary-color: #545454;
+$font-four: "Avenir Next", serif !default;
+
+#footer {
+	background: url(/images/purple-texture.jpg) repeat 50% 50%;
+	position: relative;
+	padding-top: 30px;
+	color: white;
+	width: 100%;
+	display: table;
+	.container {
+		position: relative;
+		z-index: 1;
+		//width: 100%;
+	}
+	&:before, &:after {
+		display: block;
+		content: " ";
+		width: 100%;
+		height: 400px; //originally 340, sometimes 266. Increasing this moves it down
+		position: absolute;
+		z-index: 0;
+	}
+	&:before {
+		//background: url(../images/purple-gradient-bubble-top.png) repeat-x 0 0;
+		top: 0;
+	}
+	&:after {
+		background: url(../images/purple-gradient-bubble-top.png) repeat-x 0 -10%; //decreasing this moves it up
+		top: 0;
+	}
+	a {
+		color: white;
+	}
+	h1{
+		font: $font-one;
+		font-size: 48px;
+		color: $primary-color;
+	}
+	h4{
+		font: $font-four;
+		font-size: 18px;
+		color: white;
+	}
+	p{
+		font-size: 13px;
+		color: white;
+		margin: 0;
+	}
+	.btn{
+		text-transform: uppercase;
+	}
+	.helptwo{
+		h4{
+			opacity: 0;
+		}
+	}
+	.address, .contact, .helpone, .helptwo, .give{
+		display: table-cell;
+		padding: 2em;
+	}
+.bttom{
+	width: 100%;
+	background: url(/images/purple-texture-dark.jpg) repeat 50% 50%;
+	font-size: 12px;
+	color: white; //originally white
+	padding-top: 5px;
+	padding-bottom: 5px;
+	.copy{
+		top: 20px;
+		left: 35px;
+	}
+	.fbw{
+		margin-top: 2px;
+		width: 25px;
+		height: 24px;
+	}
+	.tweet{
+		margin-right: 40px;
+		margin-top: 2px;
+		width: 25px;
+		height: 24px;
+	}
+	.follow{
+		top: 20px;
+		right: 10px;
+	}
+	.social {
+		left: 1000px;
+		> li > a {
+			padding: 8px;
+		}
+	}
+}
+
+}

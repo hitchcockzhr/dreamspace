@@ -1,0 +1,46 @@
+{% extends "templates/layouts/default.html" %}
+
+{% block body_id %}reference_profile{% endblock %}
+
+{% block content %}
+<!--image src-->
+<!--page.attribute or reference.attribute-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-4 col-md-7 col-md-offset-5">
+				<h1>{{ reference.title }}</h1>
+				{% if reference.heroJob %}
+				<p class="quote">&ldquo;{{ reference.heroJob }}&rdquo;</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+
+<!--start of div for container-->
+<!--start of div for row-->
+
+	<div class="col-sm-8 col-sm-push-4 col-md-7 col-md-push-5">
+			<div class="info">
+
+				{{% reference.photo %}}
+				{{% reference.history %}}
+
+				{% if reference.birthdate %}
+					<span><strong>Born:</strong> {{ reference._.birthdate.format("MMMM D, YYYY") }}
+
+					</span>
+				{% endif %}
+
+				{% if reference.page.Story %}
+					<span><strong>About:</strong> {{ reference.Story }} <!--used to have underscore-->
+
+					</span>
+				{% endif %}
+
+
+
+
+			</div>
+			{{ page.blurb }}
+		</div>

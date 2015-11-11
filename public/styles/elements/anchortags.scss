@@ -1,0 +1,28 @@
+.anchors ul
+{
+  margin: 25px 0 0 0;
+  padding-bottom: 20px; //originally: padding of 0
+  text-align: center;
+}
+
+.anchors ul li
+{
+  list-style-type: none;
+  display: inline;
+}
+
+.anchors li:before
+{
+  content: "|";
+  padding: 20px;
+}
+
+.anchors li:first-child:before
+{
+  content: none;
+}
+
+.anchors ul li a
+{
+  text-decoration: none;
+}

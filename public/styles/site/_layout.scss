@@ -1,0 +1,29 @@
+@import "Footer.scss";
+
+#header {
+	margin-top: 30px;
+}
+
+.gallery-image img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.share_this {
+			float: left;
+			text-transform: uppercase;
+			font-size: 12px;
+			.contents{
+				text-decoration: none;
+				&:before {
+					content: "Share This:";
+					color: blue;
+					padding-right: 5px;
+					padding-bottom: 5px;
+					vertical-align: 50%;
+					font-weight: normal;
+					display: inline-block;
+				}
+			}
+		}
