@@ -1,16 +1,21 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
-var debug = require('debug')('dreamspace:ContentBlock');
+var debug = require('debug')('dreamspace:ContentBlock'); //npm debug utility. Recommended, but I've yet to use it
 
 function camelize(str) {
     // Convert String to camelCase
+    // inspired by: https://gist.github.com/vjt/827679
+    // regex matches any word, or letter A-Z, or whitespace/punctuation (\b)
     return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
         return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
     }).replace(/\s+/g, '');
 }
 
+//allows us to build content inside the content block
+//takes in a Mongoose Schema type, and the name to display in Admin UI
+//buidling types of content is similar to building models
 function buildContentSection(listType, sectionName) {
-    var contentKey = camelize(sectionName);
+    var contentKey = camelize(sectionName); //where camelization comes in handy
     var contentSection = {};
     contentSection[contentKey + 'Image'] =  {
         label: 'Image',
@@ -40,7 +45,7 @@ function buildContentSection(listType, sectionName) {
         label: 'Content',
         type: Types.Html,
         collapse: true,
-        wysiwyg: true
+        wysiwyg: true //What You See is What You Get Generator, lets us edit HTML content section
     };
     contentSection[contentKey + 'ButtonText'] = {
         label: 'Button Text',
@@ -61,11 +66,15 @@ function buildContentSection(listType, sectionName) {
     };
     listType.add(sectionName, contentSection);
 
+//do we or do we not have the right image?
+//doesn't work quite right
     listType.schema.virtual(contentKey + 'ImageSrc').get(function() {
       if (!this[contentKey + 'Image']) return;
       return this[contentKey + 'Image'].href;
     });
 
+//builds url for YouTube video
+//instead of using services like Embed.ly
     listType.schema.virtual(contentKey + 'YoutubeId').get(function() {
         if (!this[contentKey + 'Youtube']) return;
 
@@ -80,8 +89,9 @@ function buildContentSection(listType, sectionName) {
         return video_id;
     });
 }
+
 /**
- * ContentBlock Model
+ * Actual ContentBlock Model
  * ==========
  */
 const ContentBlock = new keystone.List('ContentBlock', {
@@ -114,16 +124,21 @@ ContentBlock.add({
 ContentBlock.defaultColumns = 'name';
 ContentBlock.register();
 
+//In the same file, we can define different kinds of content blocks
+//This reduces clutter and the need for multiple files
+//To build content, pass in the block and what you want it to be called
 var FullWidth = new keystone.List('FullWidth', { inherits: ContentBlock });
 buildContentSection(FullWidth, 'Main');
 FullWidth.register();
 
+// Three Column layout
 var ThreeCol = new keystone.List('ThreeCol', { inherits: ContentBlock });
 buildContentSection(ThreeCol, 'Left');
 buildContentSection(ThreeCol, 'Center');
 buildContentSection(ThreeCol, 'Right');
 ThreeCol.register();
 
+// Left Aligned
 var LeftAside = new keystone.List('LeftAside', { inherits: ContentBlock });
 LeftAside.add({
     verticalCenter: {
@@ -135,6 +150,7 @@ buildContentSection(LeftAside, 'Aside');
 buildContentSection(LeftAside, 'Main');
 LeftAside.register();
 
+// Right Aside
 var RightAside = new keystone.List('RightAside', { inherits: ContentBlock });
 RightAside.add({
     verticalCenter: {

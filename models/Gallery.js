@@ -1,3 +1,4 @@
+//Keystone Generated
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
 

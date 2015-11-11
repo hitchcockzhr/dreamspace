@@ -1,3 +1,4 @@
+//Keystone Generated, edit by me
 var keystone = require('keystone');
 var crypto = require('crypto');
 var _ = require('underscore');

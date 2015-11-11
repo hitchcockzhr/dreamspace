@@ -1,3 +1,5 @@
+<!--using macros lets one define reusable chunks of content-->
+<!--it is like a function with many "if" statements-->
 {% macro contentBlock(blockContent, blockKey) %}
 <div class="contentBlock">
 	{% if blockContent[blockKey + 'Image'].exists %}

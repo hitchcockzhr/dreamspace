@@ -22,13 +22,23 @@ Types = keystone.Field.Types;
  heroJob: {type: String} //should it be required?
  });
 
- //
+// Keystone equivalent of virtual methods
+ Reference.schema.virtual('heroImgSrc').get(function() {
+   if(!this.heroImage.exists) return;
+   return this._.heroImage.limit(1440, 900); //size limit for image
+ });
 
  Reference.add('Details', {
  gender: {type: Types.Select, options: ['male', 'female']},
  photo: {type: Types.CloudinaryImage},
  history: {type: Types.Select, options: ['past', 'current', 'present']}, //past or present employer(s)
  birthdate: {type: Types.Date, yearRange: [1900, 2015]}
+ });
+
+ //more photo code
+ Reference.schema.virtual('photoSrc').get(function() {
+   if(!this.photo.exists) return;
+   return this._.photo.limit(1440, 900); //size limit for image
  });
 
  Reference.add('Blurb', {
@@ -54,4 +64,15 @@ Types = keystone.Field.Types;
 
  Reference.register();
 
- //perhaps some methods, later on
+ //save the document
+ Reference.schema.pre('save', function(next) {
+   var thisPage = this;
+   BasePage.model.findOne({slug: 'reference'}, function(err, parentNode) {
+     if(parentNode) {
+       thisPage.fullPath = parentNode.fullPath + thisPage.slug + '/';
+     }
+     else {
+       thisPage.fullPath = '/' + thisPage.slug + '/';
+     }
+   });
+ });

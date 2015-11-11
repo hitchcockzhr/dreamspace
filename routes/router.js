@@ -9,7 +9,6 @@ var debug = require('debug')('dreamspace:router');
 module.exports = function(req, res) {
 
 	var locals = res.locals;
-  //other things can be changed later, just look at the Backup Drive
 
 	var q = keystone.list('BasePage').model.findOne({
 		fullPath: locals.full_path

@@ -1,3 +1,4 @@
+<!--Keystone Generated-->
 {% extends "templates/layouts/default.html" %}
 
 {% macro blogPost(post) %}
@@ -61,7 +62,7 @@
 					</div>
 					{% if data.posts.totalPages > 1 %}
 						<ul class="pagination">
-							
+
 							{% if data.posts.previous %}
 								<li>
 									<a href="?page={{ data.posts.previous }}">

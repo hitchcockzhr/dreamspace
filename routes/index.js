@@ -29,19 +29,20 @@ module.exports = function(app) {
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
-	//app.get('/newpage', middleware.requiresUser, routes.views.reference);
+	app.post('/api/signin', routes.views.gallery);
+  app.get('/newpage', middleware.requireUser, routes.views.reference);
 
 	//other stuff here?
 
 	// add an API endpoint for signing in _before_ your protected routes
 	//in routes/index.js it is routes.api.signin?
-	/*app.post('/api/signin', routes.api.signin);
-	app.post('/api/signout', routes.api.signout);*/
+	app.post('/api/signin', routes.api.signin);
+	app.post('/api/signout', routes.api.signout);
 
 
 	// then bind the middleware in your routes before any paths
 	// that should be protected, in this case, ALL requests to /api
-	//app.all('/api*', routes.api.checkAuth);
+	app.all('/blog*', checkAuth); //used to be checkAuth
 
 	app.get('/*', router);
 

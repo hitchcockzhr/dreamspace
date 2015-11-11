@@ -8,11 +8,11 @@ var NestedSetPlugin = require('mongoose-nested-set');
  */
 
 var BasePage = new keystone.List('BasePage', {
-  map: { name: 'name' },
-  autokey: { path: 'slug', from: 'title', unique: true },
+  map: { name: 'name' }, //map it to special list path, display name in Admin UI
+  autokey: { path: 'slug', from: 'title', unique: true }, //plugin that automatically generates key for each object
   sortable: true,
-  sortContext: 'BasePage:childPages',
-  track: true
+  sortContext: 'BasePage:childPages', //list:relationship pair
+  track: true //keep track in Admin UI of who created what and when
 });
 
 BasePage.add({
@@ -32,7 +32,7 @@ BasePage.add(
         heading: 'Nav'
     },
     {
-        parentId: { type: Types.Relationship, ref: 'BasePage', index: true, initial: true },
+        parentId: { type: Types.Relationship, ref: 'BasePage', index: true, initial: true }, //allow it to have a parent in a header nav
     }
 );
 
@@ -71,7 +71,7 @@ BasePage.add(
 BasePage.add(
     'Blocks',
     {
-        blocks: { type: Types.Relationship, ref: 'ContentBlock', many: true }
+        blocks: { type: Types.Relationship, ref: 'ContentBlock', many: true } //accepts models called content blocks
     }
 );
 
@@ -79,11 +79,12 @@ BasePage.schema.virtual('href').get(function() {
     return this.fullPath;
 });
 
-BasePage.schema.plugin(NestedSetPlugin);
+BasePage.schema.plugin(NestedSetPlugin); //implement nested set pattern for mongoose models
 BasePage.defaultColumns = 'name, title, state';
 
 BasePage.register();
 
+//middleware function to save document
 BasePage.schema.pre('save', function(next) {
   var thisPage = this;
   var thisBasePage = BasePage.model(this);
