@@ -88,11 +88,28 @@ exports.flashMessages = function(req, res, next) {
 
 };
 
+//in here right now for testing
+//we can control who sees which pages, outside of JUST the site admin
+exports.roleAuth = function(req, res, next) {
+
+    if(!req.user.role === 'authorized') {
+			res.redirect('/login');
+		}
+		next();
+
+};
+
+//More complicated function to go with TestObj Model
+//it turns our you can define "rules" for checking people
+/*var rules = [
+			{path:"XxObj",roles:['aa']},
+			{path:"testobjpath",roles:['cc','xx','zz']}
+		];*/
+
 
 /**
-	Prevents people from accessing protected pages when they're not signed in
+	Prevents people from accessing protected pages when they're not signed in. In here for now, but may not be needed in future
  */
-
 //requires login
 exports.requireUser = function(req, res, next) {
 

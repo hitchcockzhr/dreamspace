@@ -33,6 +33,9 @@
 				Remember to <a href="https://github.com/keystonejs/keystone" target="_blank">Star KeystoneJS on GitHub</a> and
 				<a href="https://twitter.com/keystonejs" target="_blank">follow @keystonejs</a> on twitter for updates.
 			</p>
+			{% if user and user.role == 'authorized' %}
+			<p> TOUCH MY PEEPEE!</p>
+			{% endif %}
 		</div>
 	</div>
 {% endblock %}

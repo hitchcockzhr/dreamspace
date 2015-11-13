@@ -8,7 +8,7 @@ var importRoutes = keystone.importer(__dirname);
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('routes', middleware.lowercaseUrlMiddleware);
 keystone.pre('routes', middleware.initErrorHandlers);
-//keystone.pre('routes', middleware.requiresUser);
+//keystone.pre('routes', middleware.initSupperAdminChecking) --> Will check at every page load if you are Super Admin or not, with TestObj example
 keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
@@ -29,20 +29,22 @@ module.exports = function(app) {
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
-	app.post('/api/signin', routes.views.gallery);
-  app.get('/newpage', middleware.requireUser, routes.views.reference);
+  //app.get('/newpage', middleware.requireUser, routes.views.reference);
+	app.get('/newpage', middleware.roleAuth, function(req, res) {
+		res.render('/newpage');
+	});
 
 	//other stuff here?
 
 	// add an API endpoint for signing in _before_ your protected routes
 	//in routes/index.js it is routes.api.signin?
-	app.post('/api/signin', routes.api.signin);
-	app.post('/api/signout', routes.api.signout);
+	//app.post('/api/signin', routes.api.signin);
+	//app.post('/api/signout', routes.api.signout);
 
 
 	// then bind the middleware in your routes before any paths
 	// that should be protected, in this case, ALL requests to /api
-	app.all('/blog*', checkAuth); //used to be checkAuth
+	//app.all('/blog*', checkAuth); //used to be checkAuth
 
 	app.get('/*', router);
 
