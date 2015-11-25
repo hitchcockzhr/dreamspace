@@ -1,0 +1,51 @@
+<!--and then they eat the poopoo-->
+{% import "templates/mixins/flash-messages.html" as FM %}
+
+<!doctype html>
+<html>
+<head>
+{% if env == 'production' %}
+<script>
+//when did the site start up?
+var _sf_startpt = (new Date()).getTime();
+</script>
+{% endif %}
+
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1, width=device-width">
+
+<title>{{ title|default("Dreamspace") }}</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+<link href="/styles/site.css" rel="stylesheet">
+
+{% block css %}{% endblock %}
+</head>
+
+<body id="session-wrapper">
+  <header role="banner" class="main-header">
+   <a href="/" title="Back to Home" class="navbar-logo">Home</a>
+  </header>
+
+  <div class="main-body">
+{% block intro %}
+{{ FM.flashMessages(messages) }}
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+  </div>
+
+<script src="/js/jquery/jquery-1.11.2.min.js"></script>
+
+{% block js %}
+
+<script>
+//maybe not using stuff for google analytics
+</script>
+
+{% endblock %}
+</body>
+
+
+</html>

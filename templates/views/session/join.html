@@ -1,0 +1,28 @@
+<!--new file for the new year-->
+{% extends "templates/layouts/default.html" %}
+
+{% block flashMessages %}{% endblock %}
+
+
+{% block content %}
+<div class="container-xs">
+<div class="page-intro">
+<h1>Join my site!</h1>
+<!--call mixin for flashMessages-->
+{{ FM.flashMessages(messages) }}
+</div>
+<div class="page-content">
+<!--call mixin for authForms-->
+{{ AF.auth-forms({modal: false, initial: 'join'}) }}
+</div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+<script>
+jQuery(function($) {
+			$('.auth-form').find('.form-control').eq(0).focus().select();
+		});
+</script>
+{% endblock %}

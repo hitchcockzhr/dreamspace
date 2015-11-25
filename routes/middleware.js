@@ -18,6 +18,13 @@ exports.initLocals = function(req, res, next) {
 	];
 
 	locals.user = req.user;
+
+//keep an eye on this for error checking
+	locals.page = {
+		title: 'SydJS',
+		path: req.url.split("?")[0] // strip the query - handy for redirecting back to the page
+	};
+
 	//
 	//get full path of requested URL
 	locals.hostname = req.get('host');
@@ -90,6 +97,7 @@ exports.flashMessages = function(req, res, next) {
 
 //in here right now for testing
 //we can control who sees which pages, outside of JUST the site admin
+//however, it can not seem to pull "role" attribute into scope
 exports.roleAuth = function(req, res, next) {
 
     if(!req.user.role === 'authorized') {
@@ -110,7 +118,6 @@ exports.roleAuth = function(req, res, next) {
 /**
 	Prevents people from accessing protected pages when they're not signed in. In here for now, but may not be needed in future
  */
-//requires login
 exports.requireUser = function(req, res, next) {
 
 	if (!req.user) {
@@ -119,6 +126,16 @@ exports.requireUser = function(req, res, next) {
 	} else {
 		next();
 	}
+
+};
+
+exports.requiresLogin = function(req, res, next) {
+
+	if(!req.user) {
+ 	 res.redirect('/');
+  }
+
+  next();
 
 };
 

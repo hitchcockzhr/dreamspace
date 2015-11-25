@@ -1,28 +1,15 @@
-* There might need to be a separate model for "Roles", like there are for "Post Categories"
+* New signup/login infrastructure in place, so the old notes are useless.
 
-* Maybe make update files for Roles and Admin privileges
+*New challenge: set up good views in HTML + Nunjucks
 
-* When assigning roles in the user model you use the role relationship name
-e.g. User: [
-        { 'name.first': 'Admin', 'name.last': 'User', email: 'admin@keystonejs.com', password: 'whatevs', isAdmin: true, roles: [ 'roleMember', 'roleAdmin' ] }
-    ]
+*Join/Signup form:
+   1. Entry fields
+   2. Check those entry fields
+   3. ???
+   4. Use Bootstrap to make some clean styles
 
-* We could possibly put all these update in one file, it would be cleaner.
-
----------------------------------------------------------------------------------------
-
-* There is an exports.create function for adding users
-
-* So.....for having people manually register, my thought process is:
-1.) Signup view, with a form to put in Username and Password (maybe also 'retype password')
-2.) Signup button
-3.) Clicking said button calls the Create user function, with these params:
-   a.) exports.create = {
- User: [
-  //also passing in the type of user, since we have that working in the User model
-  { 'name.first': 'val.firstn', 'name.last': 'val.lastn', email: 'userxx@smigglesmail.com', password: 'val.pass', isAdmin: false }
- ]
-};
-4.) Only users can access certain pages (done)
-5.) Session auth (middleware is written, just hook it up)
-6.) Only users can see/edit certain stuff without going into AdminUI (half done)
+*Multiuser implementation done on 11/22. Debugging:
+1. Try module = module.exports on some of the controllers
+2. Check Nunjucks syntax on ALL templates
+3. Look at history of edits
+4. Check template inheritance

@@ -1,7 +1,7 @@
 //use this as a test
 //credit: http://baiduhix.blogspot.co.uk/2015/02/keystone-more-deeper-authorization-role.html
 //repo: wangpingxs/keystone_supperAdmin
-var keystone = require('keytsone');
+var keystone = require('keystone');
 Types = keystone.Field.Types;
 
 var NickTest = new keystone.List('TestObj', {

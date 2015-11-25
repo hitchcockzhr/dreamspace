@@ -9,7 +9,10 @@ var Types = keystone.Field.Types;
  * ==========
  */
 
-var User = new keystone.List('User');
+var User = new keystone.List('User', {
+	track: true,
+	autokey: {path: 'key', from: 'name', unique: true}
+});
 
 //var iterations = 10000;
 //var saltLength = 64;
@@ -17,8 +20,6 @@ var User = new keystone.List('User');
 
 
 User.add({
-	//we do not need a salt...do we?
-	//salt: { type: Buffer, required: true },
 	//should I have a pre-save hook on roles to modify all affected colletions?
 	name: { type: Types.Name, required: true, index: true }, //username
 	email: { type: Types.Email, initial: true, required: true, index: true },
@@ -30,8 +31,34 @@ User.add({
 	},
 	createdDate: {type: Types.Datetime, index: true, default: Date.now}
 }, 'Permissions', {
-	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true }
+	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
+  isVerified: { type: Boolean, label: 'Has a valid email address' }
+});
 
+
+/**
+*   Pre-Save
+*/
+User.schema.pre('save', function(next){
+	var member = this;
+});
+
+
+
+/**
+ * Relationships
+ */
+
+User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
+
+
+/**
+* Virtuals
+*/
+
+// Get member url
+User.schema.virtual('url').get(function() {
+	return '/member/' + this.key; 
 });
 
 // Provide access to Keystone
@@ -43,13 +70,6 @@ User.schema.virtual('canAccessKeystone').get(function() {
 //OTHER (possible) FUNCTIONS
 //toAPI() method maybe
 //static findByUsername function
-
-
-/**
- * Relationships
- */
-
-User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 
 
 /**
