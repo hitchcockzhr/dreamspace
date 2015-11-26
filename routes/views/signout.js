@@ -9,7 +9,8 @@ module.exports = function(req, res) {
 	locals.section = 'session';
 
 	keystone.session.signout(req, res, function() {
-		res.redirect('/');
+		//res.redirect('/');
+		view.render('site/signout'); //new page
 	});
 
 };

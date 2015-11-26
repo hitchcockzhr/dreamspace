@@ -1,7 +1,7 @@
 <!--Keystone Generated, edited by me-->
 
 {% import "templates/mixins/flash-messages.html" as FM %}
-{% import "templates/mixins/auth/auth-forms.html" as AF %}
+
 <!doctype html>
 <html>
 	<head>
@@ -65,9 +65,10 @@
 								{% if user.canAccessKeystone %}
 								<li><a href="/keystone">Open Keystone</a></li>
 								{% endif %}
-								<li><a href="/keystone/signout">Sign Out</a></li>
+								<li><a href="/gallery">{{user.name.first}}</a></li>
+								<li><a href="/signout">Sign Out</a></li> <!--not keystone signout-->
 							{% else %}
-								<li><a href="/keystone/signin">Sign In</a></li>
+								<li><a href="/signin">Sign In/Join</a></li> <!--not keystone signin-->
 							{% endif %}
 						</ul>
 					</div>
@@ -100,18 +101,7 @@
 		</div>
 
 
-		{# MODALS #}
-		{% block modal %}
-    {% if not user %}
-    <div id="modal-auth" tabindex="-1" role="dialog" aria-labelledby="signin" aria-hidden="true" class="modal fade">
-     <div class="modal-dialog">
-        <div class="modal-content">
-           {{ AF.auth-forms({modal: true, initial: 'signin'}) }} <!--this should be the correct way to call the mixin-->
-				</div>
-		 </div>
-		</div>
-		{% endif %}
-		{% endblock %}
+		<!--Where MODALS used to be-->
 
 
 		{# JAVASCRIPT #}

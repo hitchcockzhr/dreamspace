@@ -10,7 +10,6 @@ var Types = keystone.Field.Types;
  */
 
 var User = new keystone.List('User', {
-	track: true,
 	autokey: {path: 'key', from: 'name', unique: true}
 });
 
@@ -24,11 +23,6 @@ User.add({
 	name: { type: Types.Name, required: true, index: true }, //username
 	email: { type: Types.Email, initial: true, required: true, index: true },
 	password: { type: Types.Password, initial: true, required: true },
-	role: {
-		type: Types.Select,
-		options: 'winner, loser, authorized'
-		//'required: true at some point'
-	},
 	createdDate: {type: Types.Datetime, index: true, default: Date.now}
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
@@ -58,7 +52,7 @@ User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 
 // Get member url
 User.schema.virtual('url').get(function() {
-	return '/member/' + this.key; 
+	return '/member/' + this.key;
 });
 
 // Provide access to Keystone

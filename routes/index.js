@@ -13,9 +13,9 @@ keystone.pre('render', middleware.flashMessages);
 // Import Route Controllers
 // CONTROLLERS
 var routes = {
-  api: importRoutes('./api'),
-	views: importRoutes('./views'),
-  auth: importRoutes('./auth')
+  //api: importRoutes('./api'),
+	views: importRoutes('./views')
+  //auth: importRoutes('./auth')
 };
 
 // Setup Route Bindings
@@ -42,19 +42,16 @@ module.exports = function(app) {
 	//other stuff here?
 
 //Session
-app.all('/join', routes.views.session.join); //handles all requests to /join
-app.all('/signin', routes.views.session.signin);
-app.get('/signout', routes.views.session.signout);
+app.all('/:mode(signin|join)', routes.views.signin);
+app.get('/signout', routes.views.signout);
 
 //Authentication
-//app.all('/auth/confirm', routes.auth.confirm);
-app.all('/auth/app', routes.auth.app);
+
 
 //User? user being able to make posts may be useful
 
+
 //API for the app
-app.all('/api/app/signin-endpoint', routes.api['signin-endpoint']); //check syntax
-app.all('/api/app/signup-endpoint', routes.api['signup-endpoint']);
 
 	app.get('/*', router);
 

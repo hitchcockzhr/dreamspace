@@ -1,0 +1,82 @@
+<!--more html stuff-->
+
+{% macro sign-in %}
+
+{% block content %}
+<form method="post" role="signin" style="{{form.action}} and !='signin' ? 'display: none;' : null" novalidate="novalidate" class="signin-form">
+<input type="hidden" name="action" value="signin">
+<div class="form-control-box">
+
+<label for="signin-email" class="sr-only">Email</label>
+<input type="email" name="signin_email" placeholder="Email" id="signin-email" class="form-control">
+
+<label for="signin-password" class="sr-only">Password</label>
+<input type="password" name="signin_password" placeholder="Password" id="signin-password" value=" " class="form-control">
+</div>
+
+<button type="submit" class="btn btn-block btn-submit">Sign in</button>
+</form>
+
+
+<!--we can also fit the JOIN functionality in here, based off of the form action-->
+<!--worst case scenario, just move the below code into a separate file-->
+<form method="post" role="join" style="{{form.action}} and !='join' ? 'display: none;' : null" novalidate="novalidate" class="join-form">
+<input type="hidden" name="action" value="join">
+<div class="form-control-box">
+
+<label for="join-name" class="sr-only">Email</label>
+<input type="text" name="join_name" placeholder="Name" id="join-name" value=" " class="form-control">
+
+<label for="join-email" class="sr-only">Email</label>
+<input type="text" name="join_email" placeholder="Email" id="join-email" value=" " class="form-control">
+
+<label for="join-password" class="sr-only">Password</label>
+<input type="password" name="join_password" placeholder="Password" id="join-password" value=" " class="form-control">
+
+<label for="join-passwordConfirm" class="sr-only">Confirm Password</label>
+<input type="password" name="join_passwordConfirm" placeholder="Confirm Password" id="signin-passwordConfirm" value=" " class="form-control">
+
+</div>
+
+<button type="submit" class="btn btn-block btn-submit">Join</button>
+</form>
+
+<p class="text-center">
+<a href="javascript:;" class="btn btn-block btn-link js-toggle-join" style="display: block;">JOIN</a>
+<a href="javascript:;" class="btn btn-block btn-link js-toggle-signin" style="display: none;">SIGN IN</a>
+</p>
+
+{% endblock %}
+
+{% block js %}
+<script>
+//toggle between two forms w/o changing pages
+//worst-case scenario, just move JOIN to a different page/file
+var $form = $('.signin-form');
+var $submit = $form.find("[type='submit']");
+
+$submit.click( function() {
+  $submit.addClass( 'disabled' );
+});
+
+$form.find("input[type!='hidden']").first().focus();
+
+$('.js-toggle-join').click( function() {
+  $('.join-form').show();
+  //- $('.join-form').show().find("input[type!='hidden']").first().focus();
+  $('.signin-form').hide();
+  $('.js-toggle-signin').show();
+  $('.js-toggle-join').hide();
+});
+
+$('.js-toggle-signin').click( function() {
+  $('.signin-form').show();
+  //- $('.signin-form').show().find("input[type!='hidden']").first().focus();
+  $('.join-form').hide();
+  $('.js-toggle-join').show();
+  $('.js-toggle-signin').hide();
+});
+</script>
+{% endblock %}
+
+{% endmacro %}
