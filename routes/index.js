@@ -42,7 +42,8 @@ module.exports = function(app) {
 	//other stuff here?
 
 //Session
-app.all('/:mode(signin|join)', routes.views.signin);
+app.all('/signin', routes.views.signin);
+app.all('/join', routes.views.join);
 app.get('/signout', routes.views.signout);
 
 //Authentication
