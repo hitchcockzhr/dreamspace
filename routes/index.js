@@ -27,8 +27,10 @@ module.exports = function(app) {
 	//app.post("/login", middleware.requiresSecure, mid.requiresLogout, controllers.Account.login);, AND middleware.requiresUser
 
   //Website
-  app.get('/', routes.views.index);
+  app.get('/', routes.views.home); //no longer 'index'
 	app.get('/blog/:category?', routes.views.blog);
+	app.get('/projects', routes.views.plog);
+	app.get('/blog/post/:post', routes.views.post); //similar to stuffffff
 	app.get('/blog/post/:post', routes.views.post);
   app.all('/gallery*', middleware.requireUser);
 	app.all('/gallery', routes.views.gallery); //used to be a regular get

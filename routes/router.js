@@ -6,6 +6,9 @@ var debug = require('debug')('dreamspace:router');
  * This module provides a router that will map model types to views
  */
  //could we maybe just start with 'module.exports'
+
+//Breadcrumbs would be nice
+//the routing logic goes here
 module.exports = function(req, res) {
 
 	var locals = res.locals;

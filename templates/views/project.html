@@ -1,0 +1,28 @@
+<!--this is driving me crazy-->
+{% extends "templates/layouts/default.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <p>
+          <a href="/blog">&larr; Go Back</a>
+        </p>
+        <hr>
+        {% if not data.project %}
+          <h2>Invalid Project Page.</h2>
+        {% else %}
+          <div class="project">
+            {% if data.project.image.exists %}
+              <div class="image-wrap">
+                <img src="{{ data.project._.image.fit(750,450) }}" class="img-responsive">
+              </div>
+            {% endif %}
+            {{ data.project.content }}
+          <!--maybe, MABYE have share buttons, but this is not really a blog-->
+          </div>
+        {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

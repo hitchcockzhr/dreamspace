@@ -1,0 +1,27 @@
+{% extends "templates/layouts/default.html" %}
+
+{% from 'templates/mixins/content_block.html' import pageBlock %} <!--takes content blocks, unlike default index-->
+
+{% block body_id %}homepage{% endblock %}
+
+{% block content %}
+
+		<div class="container"> <!--originally "jumbotron"-->
+			<div class="col">
+			<img src="/images/logo.svg" width="160"> <!--make better logo-->
+			<h1>{{page.intro.title}}</h1>
+			{% if page.intro.image.exists %}
+      <a href="{{page.intro.link}}"><img src="{{page.intro.image.href}}" alt="{{page.intro.linkText}}"></a>
+			{% endif %}
+
+      <!--more stuff, and do good styles-->
+
+			<p>This is "Dreamspace", my interactive portofolio site! </p>
+			<p>This homepage is stubbed out for now, need to like very nice!</p>
+			<p>You can sign up or log in to join the conversation!</p>
+		</div>
+		</div>
+
+{% endblock %}
+
+{% block js %}{% endblock %}

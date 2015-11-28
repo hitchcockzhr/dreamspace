@@ -1,0 +1,20 @@
+<!--I must be needing to blast off again-->
+{% extends "templates/layouts/default.html" %}
+
+{% macro seeProject(project) %}
+<div class="post" data-ks-editable="editable(user, { list: " Project ", id: project.id })">
+	<h2>
+		<a href="/plog/project/{{ project.slug }}">{{ project.title }}</a>
+	</h2>
+
+	{% if project.image.exists %}
+		<img src="{{ project._.image.fit(160,160) }}" class="img pull-right">
+	{% endif %}
+
+	{% if project.content %}
+		<p class="read-more">
+			<a href="/plog/project/{{ project.slug }}">Read more...</a>
+		</p>
+	{% endif %}
+</div>
+{% endmacro %}
