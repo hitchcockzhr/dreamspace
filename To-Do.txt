@@ -1,0 +1,9 @@
+* Polish "Sign Up" Functionality
+* Think about sending users emails
+* Fix Cloudinary account
+* Pages for:
+  1. Programming
+  2. Videos
+  3. Games
+* SASS styles (maybe)
+* Breadcrumb middleware

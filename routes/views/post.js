@@ -42,6 +42,39 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	//load Comments
+	//we need to use an update handler
+	//inspired by:
+	// https://gist.github.com/JedWatson/9741171
+	view.on('post', { action: 'create-comment' }, function(next) {
+
+		// handle form
+		var newPostComment = new PostComment.model({
+				post: locals.post.id,
+				author: locals.user.id
+			});
+
+   //model comes with getUpdateHandler method
+		var updater = newPostComment.getUpdateHandler(req, res, {
+				errorMessage: 'There was an error creating your comment:'
+			});
+
+		updater.process(req.body, {
+			flashErrors: true,
+			logErrors: true,
+			fields: 'content'
+		}, function(err) {
+			if (err) {
+				locals.validationErrors = err.errors;
+			} else {
+				req.flash('success', 'Your comment has been added successfully.');
+				return res.redirect('/blog/post/' + locals.post.slug);
+			}
+			next();
+		});
+
+	});
+
 	// Render the view
 	view.render('post');
 

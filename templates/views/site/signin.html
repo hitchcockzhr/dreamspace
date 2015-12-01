@@ -1,8 +1,9 @@
-<!--more html stuff-->
-
+<!--test inheritance for a bit-->
+{% extends "templates/layouts/default.html" %}
 
 
 {% block content %}
+<div class="bodyForm">
 <form method="post" role="signin" novalidate="novalidate" class="signin-form">
 <input type="hidden" name="action" value="signin">
 <div class="form-control-box">
@@ -12,6 +13,7 @@
 
 <label for="signin-password" class="sr-only">Password</label>
 <input type="password" name="signin_password" placeholder="Password" id="signin-password" value=" " class="form-control">
+</div>
 </div>
 
 <button type="submit" class="btn btn-block btn-submit">Sign in</button>

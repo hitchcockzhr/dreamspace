@@ -1,6 +1,9 @@
 var keystone = require('keystone');
 var async = require('async');
 
+//not using module = module.exports because
+//I don't have the C++ BSON extension
+//using only pure JS
 module.exports = function(req, res) {
 
   if (req.user) {
@@ -81,7 +84,7 @@ module.exports = function(req, res) {
 			if (err) return next();
 
 			var onSuccess = function() {
-				return res.redirect('/'); //CHECK where to redirect to
+				return res.redirect('/gallery'); //CHECK where to redirect to
 			}
 
 			var onFail = function(e) {
@@ -95,6 +98,6 @@ module.exports = function(req, res) {
 
 	});
 
-  view.render('site/join'); //no longer 'session' folder
+  view.render('site/join'); //in templates/views/site
 
 }

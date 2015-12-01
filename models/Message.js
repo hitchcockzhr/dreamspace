@@ -78,7 +78,6 @@ Message.schema.methods.notifyAdmins = function(callback) {
  * ============
  */
 
-Message.addPattern('standard meta');
 Message.defaultSort = '-publishedDate';
 Message.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
 Message.register();
