@@ -1,4 +1,5 @@
 //THIS FILE IS ESSENTIALLY 'router.js' FOR A NORMAL MVC APP
+var _ = require('underscore');
 var keystone = require('keystone');
 var router = require('./router');
 var middleware = require('./middleware');
@@ -9,6 +10,21 @@ keystone.pre('routes', middleware.initLocals);
 keystone.pre('routes', middleware.lowercaseUrlMiddleware);
 keystone.pre('routes', middleware.initErrorHandlers);
 keystone.pre('render', middleware.flashMessages);
+
+// Handle 404 errors
+keystone.set('404', function(req, res, next) {
+	res.notfound();
+});
+
+// Handle other errors
+keystone.set('500', function(err, req, res, next) {
+	var title, message;
+	if (err instanceof Error) {
+		message = err.message;
+		err = err.stack;
+	}
+	res.err(err, title, message);
+});
 
 // Import Route Controllers
 // CONTROLLERS
@@ -32,8 +48,7 @@ module.exports = function(app) {
 	//app.get('/projects', routes.views.plog);
 	//app.get('/blog/post/:post', routes.views.post); //check with plog and projects
 	app.get('/blog/post/:post', routes.views.post);
-  app.all('/gallery*', middleware.requireUser);
-	app.all('/gallery', routes.views.gallery); //used to be a regular get
+
 
 	//app.get('/firstsign', routes.views.signuppage); //also try firstsign
 	//app.get('/newpage', middleware.requiresLogin, routes.views.reference);
@@ -44,15 +59,16 @@ module.exports = function(app) {
 	//other stuff here?
 
 //Session
-app.all('/signin', routes.views.signin);
-app.all('/join', routes.views.join);
+app.get('/signin', routes.views.signin);
+app.get('/join', routes.views.join);
 app.get('/signout', routes.views.signout);
 
 //Authentication
 
 
 //User? user being able to make posts may be useful
-
+app.all('/gallery*', middleware.requireUser);
+app.all('/gallery', routes.views.gallery); //used to be a regular get
 
 //API for the app
 

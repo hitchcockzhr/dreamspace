@@ -14,17 +14,13 @@ exports.initLocals = function(req, res, next) {
 	locals.navLinks = [
 		{ label: 'Home',		key: 'home',		href: '/' },
 		{ label: 'Blog',		key: 'blog',		href: '/blog' },
-		{ label: 'Projects',		key: 'projects',		href: '/projects' }
-		//{ label: 'Gallery',		key: 'gallery',		href: '/gallery' }
+		{ label: 'Projects',		key: 'projects',		href: '/projects' },
+		{ label: 'Gallery',		key: 'gallery',		href: '/gallery' }
 	];
 
 	locals.user = req.user;
 
-//keep an eye on this for error checking
-	locals.page = {
-		title: 'SydJS',
-		path: req.url.split("?")[0] // strip the query - handy for redirecting back to the page
-	};
+
 
 	//
 	//get full path of requested URL
@@ -123,7 +119,7 @@ exports.requireUser = function(req, res, next) {
 
 	if (!req.user) {
 		req.flash('error', 'Please sign in to access this page.');
-		res.redirect('/keystone/signin'); //swith to custom view?
+		res.redirect('/signin'); //swith to custom view?
 	} else {
 		next();
 	}
