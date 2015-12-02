@@ -18,3 +18,68 @@
 	{% endif %}
 </div>
 {% endmacro %}
+
+{% block intro %}
+<div class="container">
+<h1>My Projects!</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 col-md-9">
+
+<div class="p-blog">
+{% for project in data.projects.results %} {{ seeProjcet(project) }} {% endfor %}
+</div>
+
+<!--if I have enough stuff to fill out multiple pages-->
+<!--maybe should enforce page limit-->
+{% if data.projects.totalPages > 1 %}
+	<ul class="pagination">
+
+		{% if data.projects.previous %}
+			<li>
+				<a href="?page={{ data.projects.previous }}">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+			</li>
+		{% else %}
+			<li class="disabled">
+				<a href="?page=1">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+			</li>
+		{% endif %}
+
+    <!--for each project on the page, set Bootstrap property to ACTIVE if we are on the current page-->
+		{% for p in data.projects.pages %} {% set class = ( "active" if data.projects.currentPage == p else "" ) %}
+			<li class="{{ class }}">
+				{% set page = ( (data.projects.totalPages if i else 1) if p == "..." else p ) %}
+				<a href="?page={{ page }}">{{ p }}</a>
+			</li>
+		{% endfor %}
+
+		{% if data.projects.next %}
+			<li>
+				<a href="?page={{ data.projects.next }}">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</li>
+		{% else %}
+			<li class="disabled">
+				<a href="?page={{ data.projects.totalPages }}">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</li>
+		{% endif %}
+
+	</ul>
+{% endif %}
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

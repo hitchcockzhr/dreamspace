@@ -20,7 +20,8 @@ Message.add({
 	image: {
     collapse: true,
     type: Types.LocalFile,
-    dest: 'data/uploads/static/projectImages'
+    dest: 'data/uploads/static/messImage',
+		prefix: '/static/messImage'
   },
 	content:  { type: Types.Html, wysiwyg: true, height: 400 }
 });

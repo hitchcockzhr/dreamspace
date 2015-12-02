@@ -59,8 +59,8 @@ module.exports = function(app) {
 	//other stuff here?
 
 //Session
-app.get('/signin', routes.views.signin);
-app.get('/join', routes.views.join);
+app.all('/signin', routes.views.signin);
+app.all('/join', routes.views.join);
 app.get('/signout', routes.views.signout);
 
 //Authentication

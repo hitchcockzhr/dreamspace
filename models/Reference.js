@@ -60,6 +60,12 @@ Types = keystone.Field.Types;
    }
  });
 
+ //Put this here for later reference
+ //how to get an array of many strings
+ /*Things.add({
+  manyStrings: { type: Types.TextArray }
+});*/
+
 
 
  Reference.register();
