@@ -2,7 +2,7 @@
 {% extends "templates/layouts/default.html" %}
 
 {% macro seeProject(project) %}
-<div class="post" data-ks-editable="editable(user, { list: " Project ", id: project.id })">
+<div class="project" data-ks-editable="editable(user, { list: " Project ", id: project.id })">
 	<h2>
 		<a href="/plog/project/{{ project.slug }}">{{ project.title }}</a>
 	</h2>
