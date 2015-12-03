@@ -1,4 +1,4 @@
-//One double chili fries coming up
+/*//One double chili fries coming up
 var keystone = require('keystone');
 var Reference = keystone.list('Reference');
 var _ = require('underscore');
@@ -17,7 +17,7 @@ locals.query = req.query;
 //how to sort
 
 view.on('init', function(next) {
-  //stubbed 
+  //stubbed
 });
 
-};
+};*/

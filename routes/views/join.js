@@ -70,11 +70,14 @@ module.exports = function(req, res) {
 
 				};
 
-				var User = keystone.list('User').model,
+console.log(userData);
+        var User = keystone.list('User').model,
 					newUser = new User(userData);
 
-				newUser.save(function(err) {
-					return cb(err);
+
+        newUser.save(function(err) {
+          console.log("word");
+          return cb(err);
 				});
 
 			}
@@ -84,7 +87,8 @@ module.exports = function(req, res) {
 			if (err) return next();
 
 			var onSuccess = function() {
-				return res.redirect('/gallery'); //CHECK where to redirect to
+        console.log("Success");
+        return res.redirect('/gallery'); //CHECK where to redirect to
 			}
 
 			var onFail = function(e) {
