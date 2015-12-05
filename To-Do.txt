@@ -1,12 +1,9 @@
 * Polish "Sign Up" Functionality (WIP)
-* Think about sending users emails (X)
-* Fix Cloudinary account (X)
 * Pages for:
   1. Programming
   2. Videos (Would this page be redundant?)
   3. Games + Download Links
 * Bootstrap Styles (WIP)
 * Breadcrumb middleware
-* Also don't forget the view for the Project Page (X)
-* Fix References view (only a little bit of work, like above) (X)
 * Sitemap (save for end, shouldn't be too hard)
+* Get alert to show up (and do some styles)
