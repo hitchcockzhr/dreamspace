@@ -9,6 +9,7 @@
     "debug": "^2.2.0",
     "dotenv": "^1.1.0",
     "express": "^4.13.3",
+    "express-breadcrumbs": "0.0.2",
     "keystone": "^0.3.11",
     "moment": "^2.10.6",
     "mongoose-nested-set": "0.0.7",

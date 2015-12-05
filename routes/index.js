@@ -59,6 +59,7 @@ module.exports = function(app) {
 	//other stuff here?
 
 //Session
+//do a little breadcrumb test here
 app.all('/signin', routes.views.signin);
 app.all('/join', routes.views.join);
 app.get('/signout', routes.views.signout);

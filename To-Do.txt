@@ -1,9 +1,8 @@
 * Polish "Sign Up" Functionality (WIP)
 * Pages for:
-  1. Programming
-  2. Videos (Would this page be redundant?)
-  3. Games + Download Links
-* Bootstrap Styles (WIP)
-* Breadcrumb middleware
+  1. Programming (easy)
+  2. Games + Download Links
+* Breadcrumb middleware (Initialization: https://www.npmjs.com/package/express-breadcrumbs)
 * Sitemap (save for end, shouldn't be too hard)
-* Get alert to show up (and do some styles)
+* Get alert to show up (and do some styles) (easy)
+* Implement Mocha Testing
