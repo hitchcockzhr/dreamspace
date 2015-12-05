@@ -93,25 +93,6 @@ exports.flashMessages = function(req, res, next) {
 
 };
 
-//in here right now for testing
-//we can control who sees which pages, outside of JUST the site admin
-//however, it can not seem to pull "role" attribute into scope
-exports.roleAuth = function(req, res, next) {
-
-    if(!req.user.role === 'authorized') {
-			res.redirect('/login');
-		}
-		next();
-
-};
-
-//More complicated function to go with TestObj Model
-//it turns our you can define "rules" for checking people
-/*var rules = [
-			{path:"XxObj",roles:['aa']},
-			{path:"testobjpath",roles:['cc','xx','zz']}
-		];*/
-
 
 /**
 	Prevents people from accessing protected pages when they're not signed in. In here for now, but may not be needed in future
@@ -155,14 +136,3 @@ exports.requiresSecure = function(req, res, next) {
 exports.bypassSecure = function(req, res, next) {
 	next();
 };
-
-//exporting the functions, perhaps?
-/*module.exports.requiresLogin = requiresLogin;
-module.exports.requiresLogout = requiresLogout;
-
-if(process.env.NODE_ENV === "production") {
-  module.exports.requiresSecure = requiresSecure;
-}
-else {
-  module.exports.requiresSecure = bypassSecure;
-}*/
