@@ -1,0 +1,45 @@
+<!--dont forget to render the view-->
+{% extends "templates/layouts/default.html" %}
+
+
+<!--might change this to WORK EXP page, since footer has contact info-->
+<!--show the places where I've worked-->
+{% block js %}
+<script type="text/javascript" src="https://googleapis.com/maps/api/js?key=AIzaSyAoerV6f2tR84z91SOnN8xylMPuVyRsC7M"></script>
+{% endblock %}
+
+
+<!--lets put a cool google map in here, flashback to RICH MEDIA 1-->
+{% block hero %}
+<div class="map_container">
+<div class="map_cover">
+</div>
+<iframe width="600" height="450" frameborder="0" style="border:0"></iframe> <!--src attribute will be location to show on map, check with Sean Boyle-->
+</div>
+
+<div class="contact_bar">
+  <div class="container">
+    <ul class="items">
+      <li class="visit">
+        <div>
+          <h4>Eductation:</h4>
+          <p>One Lomb Memorial Dr Rochester, NY 14623</p>
+        </div>
+      </li>
+      <li class="phone">
+        <div>
+          <h4>Call Me</h4>
+          <p>781-258-1918</p>
+        </div>
+      </li>
+      <li class="email">
+        <div>
+          <h4>Email Me</h4>
+          <p><a href="mailto:nicholasiebba@gmail.com">nicholasiebba@gmail.com</a></p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</div>
+{% endblock %}
