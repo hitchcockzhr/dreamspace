@@ -6,7 +6,9 @@ var Types = keystone.Field.Types;
  * ==========
  */
 
- var Alert = new keystone.List('Alert', {
+//changing from 'var' to 'const' fixed the Admin UI bug
+//sweet
+ const Alert = new keystone.List('Alert', {
    map: {name: 'description'},
    track: true
  });

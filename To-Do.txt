@@ -2,7 +2,8 @@
 * Pages for:
   1. Programming (easy)
   2. Games + Download Links
-* Breadcrumb middleware (Initialization: https://www.npmjs.com/package/express-breadcrumbs)
-* Sitemap (save for end, shouldn't be too hard)
-* Get alert to show up (and do some styles) (easy)
-* Implement Mocha Testing
+* Nice homepage design
+* Finishing touches on alert + styles (easy)
+* Message page a la DomoMaker (you can make them, now they need to be displayed)
+* Finish Commenting on Blog Posts
+* Actually put the various pieces together in a coherent whole
