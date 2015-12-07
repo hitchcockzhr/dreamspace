@@ -58,6 +58,6 @@ module.exports = function(req, res) {
 
   });
 
-  view.render('new-message');
+  view.render('site/new-message');
 
 };
