@@ -10,8 +10,8 @@ module.exports = function(req, res) {
     return res.redirect('/gallery');
   }
 
-  var view = new keystone.View(req, res),
-    locals = res.locals;
+  var view = new keystone.View(req, res);
+  var locals = res.locals;
 
   locals.section = 'join'; //?
   locals.form = req.body;
@@ -56,9 +56,9 @@ module.exports = function(req, res) {
 
 			function(cb) {
 
-				var splitName = req.body.join_name.split(' '),
-					firstName = splitName[0],
-					lastName = splitName[1];
+				var splitName = req.body.join_name.split(' ');
+				var firstName = splitName[0];
+				var lastName = splitName[1];
 
 				var userData = {
 					name: {
@@ -71,8 +71,8 @@ module.exports = function(req, res) {
 				};
 
 console.log(userData);
-        var User = keystone.list('User').model,
-					newUser = new User(userData);
+        var User = keystone.list('User').model;
+				var newUser = new User(userData);
 
 
         newUser.save(function(err) {

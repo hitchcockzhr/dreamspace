@@ -45,7 +45,7 @@ module.exports = function(app) {
   //Website
   app.get('/', routes.views.home); //no longer 'index'
 	app.get('/blog/:category?', routes.views.blog);
-	//app.get('/projects', routes.views.plog);
+	//app.get('/projects', routes.views.projPage);
 	//app.get('/blog/post/:post', routes.views.post); //check with plog and projects
 	app.get('/blog/post/:post', routes.views.post);
 

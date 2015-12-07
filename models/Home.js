@@ -1,7 +1,7 @@
 var keystone = require('keystone');
-BasePage = require('./BasePage');
-_ = require('underscore');
-Types = keystone.Field.Types;
+var BasePage = require('./BasePage');
+var _ = require('underscore');
+var Types = keystone.Field.Types;
 
 /**
  * Homepage Model

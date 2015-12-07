@@ -26,7 +26,7 @@ module.exports = function(req, res) {
      //made outside of AdminUI
      //updateHandler usually makes a predefined message, but here, one is specified
      var updater = newMessage.getUpdateHandler(req, res, {
-       errorMessage: 'There was an error creating your new message';
+       errorMessage: 'There was an error creating your new message'
      });
 
    // automatically pubish posts by admin user

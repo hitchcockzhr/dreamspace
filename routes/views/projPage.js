@@ -7,7 +7,7 @@ module.exports = function(req, res) {
 	var locals = res.locals;
 
 	// Init locals
-	locals.section = 'plog';
+	locals.section = 'projPage';
 
 	locals.data = {
 		projects: []
@@ -34,5 +34,5 @@ module.exports = function(req, res) {
 
 	// Render the view
   // Really need to think of a better name
-	view.render('plog');
+	view.render('projPage');
 };

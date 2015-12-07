@@ -4,7 +4,7 @@
 {% macro seeProject(project) %}
 <div class="project" data-ks-editable="editable(user, { list: " Project ", id: project.id })">
 	<h2>
-		<a href="/plog/project/{{ project.slug }}">{{ project.title }}</a>
+		<a href="/projPage/project/{{ project.slug }}">{{ project.title }}</a>
 	</h2>
 
 	{% if project.image.exists %}
@@ -13,7 +13,7 @@
 
 	{% if project.content %}
 		<p class="read-more">
-			<a href="/plog/project/{{ project.slug }}">Read more...</a>
+			<a href="/projPage/project/{{ project.slug }}">Read more...</a>
 		</p>
 	{% endif %}
 </div>

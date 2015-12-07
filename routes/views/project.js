@@ -5,7 +5,7 @@ module.exports = function(req, res) {
 	var locals = res.locals;
 
   // Set locals
-	locals.section = 'plog'; //like a blog, but for my projects
+	locals.section = 'projPage'
 	locals.filters = {
 		project: req.params.project
 	};
