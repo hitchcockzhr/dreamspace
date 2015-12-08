@@ -45,6 +45,13 @@ User.schema.pre('save', function(next){
 
 User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 
+//Track when a User was last active
+//surprisingly simple
+User.schema.methods.wasActive = function () {
+	this.lastActiveOn = new Date();
+	return this;
+}
+
 
 /**
 * Virtuals

@@ -1,0 +1,52 @@
+<!--lets begin with comment separation-->
+{% macro comment-form(action) %}
+<form method="post" style="margin-bottom: 40px; margin-top: 40px;">
+<input type="hidden" name="action" value="create-comment">
+
+<div class="media">
+  <div class="pull-left">
+  <img src="/images/user-icon.png" alt="{{comment.author.name.full}}" width="40" height="40" class="img-responsive img-circle">
+  </div>
+  <div class="media-body">
+ <textarea placeholder="Add your comment..." name="content" style="margin-bottom: 10px; min-height: 80px; resize: vertical;" class="form-control">
+ {% if user %}
+  <button type="submit" class="btn btn-success">Submit</button>
+ {% else %}
+ <a href="/signin" class="btn btn-sm btn-primary">Sign in to comment</a>
+ {% endif %}
+  </div>
+</div>
+
+</form>
+{% endmacro %}
+
+<!--view the comments-->
+<!--should they be preceded by 'data'? Check BLOG template-->
+{% macro comment-post(comment) %}
+{% if comment.author %}
+<div class="{{comment.id}}" style="margin-top: 20px;">
+  <div class="media">
+    <div class="pull-left">
+      <img src="/images/user-icon.png" alt="{{comment.author.name.full}}" width="80" height="80" class="img-rounded">
+    </div>
+    <div class="media-body">
+      <p>
+      <strong>{{comment.author.name.full}}</strong>
+     </p>
+     <!--extra p-->
+     <p>{{ comment.content }}</p> <!--check this line-->
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endmacro %}
+
+{% macro comment-list(comments) %}
+{% if comments.length %}
+{% for comment in comments %}
+
+{{ comment-post(comment) }}
+
+{% endfor %}
+{% endif %}
+{% endmacro %}

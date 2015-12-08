@@ -1,5 +1,6 @@
 <!--Keystone Generated-->
 {% extends "templates/layouts/default.html" %}
+{% import "templates/mixins/comment_form.html" as CF %}
 
 {% block content %}
 	<div class="container">
@@ -36,57 +37,17 @@
 							{{ data.post.content.full|safe }}
 							<div class="share_this">
               <!--As a test, only winner-type users can share posts-->
-
 								<span class='st_facebook_large' displayText='Facebook'></span>
                 <span class='st_twitter_large' displayText='Tweet'></span>
                 <span class='st_email_large' displayText='Email'></span>
-
 							</div>
 						</div>
 						<hr>
-						<div class="comments">
-                <!--start adding them here-->
-                <!--if it doesn't work, make a separate view, and add comments as a mixin-->
-                <!--like the footer in the default view-->
-                <div class="comment mt-1">
-                  {% for comment in post.comments %} <!--bug fix here: comment TO commentS-->
-									{% if comment.author %}
-                  <div class="media">
-                    <div class="pull-left">
-                    <img src="/images/user-icon.png" alt="{{comment.author.name.full}}" width="40" height="40" class="media-object img-circle">
-										</div>
-										<div class="media-body">
-                    <h5 class="mt-0">
-                     {{comment.author.name.full}}
-										 <span class="text-muted"> {{moment(comment.publishedOn.fromNow()}}  </span>
-										</h5>
-										{{comment.content.html}}
-										</div>
-									</div>
-									{% endif %}
-									{% endfor %}
-              </div>
+						<div><!--class comments-->
+          {{ CF.comment-form() }}
+					{{ CF.comment-list(comments) }}
 						</div>
 
-						<!--reply form goes below this comment-->
-						{% if user %}
-             <form method="post" class="comment-form mt-5">
-             <input type="hidden" name="action" value="create-comment">
-
-						 <div class="media">
-							 <div class="pull-left">
-							 <img src="/images/user-icon.png" alt="{{comment.author.name.full}}" width="40" height="40" class="img-responsive img-circle">
-							 </div>
-							 <div class="media-body">
-							<textarea placeholder="Add your comment..." name="content" class="form-control">
-							<div class="form-inline mv-5">
-               <button type="submit" class="btn btn-success">Submit</button>
-							</div>
-							 </div>
-						 </div>
-
-						 </form>
-						{% endif %}
 					{% endif %}
 				</article>
 			</div>

@@ -1,5 +1,7 @@
 //Keystone Generated
 var keystone = require('keystone');
+var async = require('async');
+var PostComment = keystone.list('PostComment');
 
 exports = module.exports = function(req, res) {
 
@@ -42,7 +44,22 @@ exports = module.exports = function(req, res) {
 
 	});
 
-	//load Comments
+
+//Load a comment
+view.on('init', function(next){
+	PostComment.model.find().where('post', locals.post).where('cmState', 'published').where('author').ne(null).populate('author').sort('-cmDate').exec(function (err, comments) {
+		if(err){
+			return res.err(err);
+		}
+		if(!comments){
+			return res.notFound('No comment(s) found');
+		}
+		locals.comments = comments;
+		next();
+	});
+});
+
+	//Create a comment
 	//we need to use an update handler
 	//inspired by:
 	// https://gist.github.com/JedWatson/9741171
@@ -50,6 +67,7 @@ exports = module.exports = function(req, res) {
 
 		// handle form
 		var newPostComment = new PostComment.model({
+        state: 'published', //remember, this was changed
 				post: locals.post.id,
 				author: locals.user.id
 			});
@@ -68,7 +86,7 @@ exports = module.exports = function(req, res) {
 				locals.validationErrors = err.errors;
 			} else {
 				req.flash('success', 'Your comment has been added successfully.');
-				return res.redirect('/blog/post/' + locals.post.slug);
+				return res.redirect('/blog/post/' + locals.post.key);
 			}
 			next();
 		});

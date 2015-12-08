@@ -23,8 +23,7 @@ Post.add({
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 }
 	},
-	categories: { type: Types.Relationship, ref: 'PostCategory', many: true },
-	comments: { type: Types.Relationship, ref:'PostComment', many: true } //do they also need refPath:post and path:comments?
+	categories: { type: Types.Relationship, ref: 'PostCategory', many: true }
 });
 
 Post.schema.virtual('content.full').get(function() {
@@ -32,7 +31,7 @@ Post.schema.virtual('content.full').get(function() {
 });
 
 // Relationship to comments
-//Post.relationship({ ref: 'PostComment', refPath: 'post', path: 'comments' });
+Post.relationship({ ref: 'PostComment', refPath: 'post', path: 'comments' });
 
 Post.defaultSort = '-publishedDate'; //why was this not here by default?
 Post.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
