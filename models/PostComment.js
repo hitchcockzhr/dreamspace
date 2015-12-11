@@ -26,9 +26,11 @@ PostComment.add('Content', {
 
 // Pre-Save function
 // This should have been in there
-PostComment.schema.pre('save', function(next){
+
+/*PostComment.schema.pre('save', function(next){
 //isNew and wasNew are properties that track the state of a created model
 //if either cmDate or state is modified (which happens upon creation), it gets a posted cmDate assigned
+console.log("saved");
 	this.wasNew = this.isNew;
 	if (!this.isModified('cmDate') && this.isModified('cmState') && this.cmState === 'published') {
 		this.cmDate = new Date();
@@ -46,7 +48,7 @@ PostComment.schema.post('save', function () {
 			}
 		});
 	}
-});
+});*/
 
 
 /**
@@ -54,5 +56,6 @@ PostComment.schema.post('save', function () {
  * ============
  */
 
+PostComment.track = true;
 PostComment.defaultColumns = 'post, author, cmDate|20%';
 PostComment.register();

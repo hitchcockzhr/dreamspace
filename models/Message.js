@@ -1,6 +1,7 @@
 var keystone = require('keystone');
 var async = require('async');
 var Types = keystone.Field.Types;
+var utils = keystone.utils;
 
 /**
  * Messages Model
@@ -17,12 +18,6 @@ Message.add({
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true },
-	image: {
-    collapse: true,
-    type: Types.LocalFile,
-    dest: 'data/uploads/static/messImage',
-		prefix: '/static/messImage'
-  },
 	content:  { type: Types.Html, wysiwyg: true, height: 400 }
 });
 

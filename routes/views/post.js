@@ -3,7 +3,8 @@ var keystone = require('keystone');
 var async = require('async');
 var PostComment = keystone.list('PostComment');
 
-exports = module.exports = function(req, res) {
+//actually used to work with exports = moduleDOTexports
+module.exports = function(req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;

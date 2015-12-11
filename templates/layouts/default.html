@@ -39,6 +39,9 @@
 
 <!--place alert bar here if hasAlert is 'true'-->
 <!--once the alert is working and viewable-->
+  {% if alert %}
+		{% include "templates/snippets/alerts.html" %}
+	{% endif %}
 
 		<div id="header" class="container">
 

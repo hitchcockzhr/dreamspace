@@ -3,7 +3,6 @@
   1. Programming (easy)
   2. Games + Download Links
 * Nice homepage design
-* Finishing touches on alert + styles (easy)
 * Message page a la DomoMaker (you can make them, now they need to be displayed)
-* Finish Commenting on Blog Posts
+* Finish Commenting on Blog Posts (done but blocked by client??)
 * Actually put the various pieces together in a coherent whole
