@@ -40,7 +40,7 @@ Message.schema.methods.notifyAdmins = function(callback) {
 				admin: admin.name.first || admin.name.full,
 				author: results.author ? results.author.name.full : 'Somebody',
 				title: message.title,
-				keystoneURL: 'http://www.dreamspace.com/keystone/message/' + post.id, //check after deployment
+				keystoneURL: 'http://www.dreamspace.com/keystone/message/' + message.id, //check after deployment
 				subject: 'New Post to Shoutbox'
 			}, {
 				to: admin,

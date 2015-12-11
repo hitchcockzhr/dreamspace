@@ -13,7 +13,7 @@
 {{ FM.flashMessages(messages) }}
 
 <div class="form-group">
-<input type="text" name="title" placeholder="Title" tabindex="1" class="form-control input-lg">
+<input type="text" name="title" placeholder="Title" value="{{form.name}}" tabindex="1" class="form-control input-lg">
 </div>
 
 <div class="form-group">
@@ -32,4 +32,24 @@
 
 </form>
 </div>
+{% endblock %}
+
+{% block js %}
+<script>
+jQuery(function($) {
+
+      var $form = $('.management-form');
+      var $submit = $form.find('[type="submit"]');
+
+			//- focus + select first form control on load
+			$form.find('.form-control').eq(0).focus().select();
+
+			//- prevent multiple submits
+			$form.submit( function() {
+				$submit.button('loading');
+			});
+
+    });
+
+</script>
 {% endblock %}

@@ -10,16 +10,19 @@ module.exports = function(req, res) {
 
 //made page to leave posts on
  locals.section = 'board';
- locals.title = 'Leave a message';
 
- // Load all messages
+ // Load the message
  view.on('init', function(next) {
 
-   var q = keystone.list('Message').model.find().where('state', 'published').sort('-publishedDate').populate('author').limit('10');
-
-   q.exec(function(err, results) {
-     locals.data.messages = results;
-     next(err);
+   Message.model.findOne().where('author').ne(null).exec(function(err, message){
+     if(err) {
+       return res.err(err);
+     }
+     if(!message){
+       return res.notfound('We could not find what you were looking for');
+     }
+     locals.message = message;
+     next();
    });
 
  });
@@ -63,6 +66,6 @@ module.exports = function(req, res) {
  });
 
 //like the maker page in domo maker
- view.render('message');
+ view.render('site/message');
 
 }

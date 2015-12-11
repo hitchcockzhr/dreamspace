@@ -53,7 +53,7 @@ view.on('init', function(next){
 			return res.err(err);
 		}
 		if(!comments){
-			return res.notFound('No comment(s) found');
+			return res.notfound('No comment(s) found');
 		}
 		locals.comments = comments;
 		next();

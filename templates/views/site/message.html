@@ -1,0 +1,28 @@
+<!--we want to see the thing after is it made, no?-->
+{% extends "templates/layouts/default.html" %}
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+
+<span class="subheading">
+{% if message.author or message.publishedDate %}
+on {{ message._.publishedDate.format("MMMM Do, YYYY") }}
+{% endif %}
+
+{% if message.author %}
+  by {{ message.author.name.first }}
+{% endif %}
+
+<!--we could have messages display like posts-->
+<!--except there is only one type of brief content to show-->
+<!--one little extra bell and whistle to add?-->
+</span>
+
+</div>
+</div>
+</div>
+
+{% endblock %}
