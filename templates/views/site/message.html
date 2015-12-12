@@ -3,23 +3,27 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container-sm">
 <div class="row">
-<div class="col-sm-9">
+<article class="full-message">
+  {% if not message %}
+    <h2>Invalid Message.</h2>
+  {% else %}
 
-<span class="subheading">
-{% if message.author or message.publishedDate %}
-on {{ message._.publishedDate.format("MMMM Do, YYYY") }}
-{% endif %}
+<header>
+  <h1>{{ message.title }}</h1>
+  <h5>Posted</h5>
+  {% if message.publishedDate %}
+    on {{ message._.publishedDate.format("MMMM Do, YYYY") }}
+  {% endif %}
+  {% if message.author %}
+    by {{ message.author.name.first }}
+  {% endif %}
+</header>
 
-{% if message.author %}
-  by {{ message.author.name.first }}
-{% endif %}
-
-<!--we could have messages display like posts-->
-<!--except there is only one type of brief content to show-->
-<!--one little extra bell and whistle to add?-->
-</span>
+<div class="message">
+  {{ message.content }}
+</div>
 
 </div>
 </div>

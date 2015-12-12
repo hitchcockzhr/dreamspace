@@ -49,6 +49,9 @@ module.exports = function(app) {
 	//app.get('/blog/post/:post', routes.views.post); //check with plog and projects
 	app.get('/blog/post/:post', routes.views.post);
 
+	app.get('/board/message/:message', routes.views.message);
+
+
 
 	//app.get('/firstsign', routes.views.signuppage); //also try firstsign
 	//app.get('/newpage', middleware.requiresLogin, routes.views.reference);
@@ -65,11 +68,15 @@ app.all('/join', routes.views.join);
 app.get('/signout', routes.views.signout);
 
 //Authentication
+// /whatever/create/message
+//app.all('/textme/create/message', routes.views.createMessage);
 
 
 //User? user being able to make posts may be useful
+//Now let's see if this works
 app.all('/gallery*', middleware.requireUser);
 app.all('/gallery', routes.views.gallery); //used to be a regular get
+app.all('/gallery/create/message', routes.views.createMessage);
 
 //API for the app
 

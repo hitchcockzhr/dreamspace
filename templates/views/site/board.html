@@ -1,0 +1,41 @@
+<!--it's like the maker page in Domo Maker-->
+<!--add some pretty and unique stuff to it once it works-->
+
+<!--could be made as separate mixin and then called-->
+<!--do we want to save space in each file, or accept having more files?-->
+{% macro seeMessage(message) %}
+<!--<div class="col-sm-4"></div>-->
+<div class="message" data-ks-editable="editable(user, { list: " Message ", id: message.id })">
+	<h2>
+		<a href="/board/message/{{ message.slug }}">{{ message.title }}</a>
+	</h2>
+	<p class="lead text-muted">Posted
+		{% if message.publishedDate %}
+			<br>on {{ message._.publishedDate.format("MMMM Do, YYYY") }}
+		{% endif %}
+		{% if message.author %}
+			<br>by {{ message.author.name.first }}
+		{% endif %}
+	</p>
+	<p>{{ message.content }}</p>
+</div>
+{% endmacro %}
+
+{% block intro %}
+<div class="container">
+	<h1>Shout Box</h1>
+</div>
+{% endblock %}
+
+<!--think of some better design, as well-->
+{% block content %}
+<div class="container">
+<div class="row">
+  {% if data.messages.length %}
+    <div class="board"> <!--check the RESULTS-->
+      {% for message in data.messages %} {{ seeMessage(message) }} {% endfor %}
+    </div>
+  {% endif %}
+</div>
+</div>
+{% endblock %}

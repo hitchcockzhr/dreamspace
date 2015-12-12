@@ -44,6 +44,7 @@ User.schema.pre('save', function(next){
  */
 
 User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
+User.relationship({ ref: 'Message', path: 'messages', refPath: 'author' });
 
 //Track when a User was last active
 //surprisingly simple
@@ -58,9 +59,9 @@ User.schema.methods.wasActive = function () {
 */
 
 // Get member url
-User.schema.virtual('url').get(function() {
+/*User.schema.virtual('url').get(function() {
 	return '/member/' + this.key;
-});
+});*/
 
 // Provide access to Keystone
 User.schema.virtual('canAccessKeystone').get(function() {

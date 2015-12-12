@@ -14,6 +14,8 @@ module.exports = function(req, res) {
 	locals.filters = {
 		post: req.params.post
 	};
+
+//was this line ever needed to begin with??
 	locals.data = {
 		posts: []
 	};

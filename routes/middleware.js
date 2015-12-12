@@ -11,11 +11,12 @@ exports.initLocals = function(req, res, next) {
 
 //This is where you add links to other pages
 //can add any page at any time
+//remember to put projects back in later
 	locals.navLinks = [
 		{ label: 'Home',		key: 'home',		href: '/' },
 		{ label: 'Blog',		key: 'blog',		href: '/blog' },
-		{ label: 'Projects',		key: 'projects',		href: '/projects' },
-		{ label: 'Gallery',		key: 'gallery',		href: '/gallery' },
+		{ label: 'Board',		key: 'board',		href: '/board' }, //Shoutbox needs new name
+		//{ label: 'Gallery',		key: 'gallery',		href: '/gallery' },
 		{label: 'Join', key: 'join', href: '/join'}
 	];
 

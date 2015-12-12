@@ -1,36 +1,12 @@
-<!--the form for users to make message-->
+<!--the form for users to make message, under renovation-->
 <!--may inherit for now-->
 {% extends "templates/layouts/default.html" %}
 
 {% block content %}
+<div class="section">
 <div class="container">
-<form method="post" autocomplete="off" novalidate="novalidate" class="management-form">
-<input type="hidden" name="action" value="create-message">
-
-<div class="row">
-<div class="col-sm-9">
-<h4 class="heading-bordered">New Message</h4>
-{{ FM.flashMessages(messages) }}
-
-<div class="form-group">
-<input type="text" name="title" placeholder="Title" value="{{form.name}}" tabindex="1" class="form-control input-lg">
-</div>
-
-<div class="form-group">
-  <div class="row">
-<textarea name="content" placeholder="" style="min-height: 300px;" tabindex="2" class="form-control">
-  </div>
-</div>
-
-<div class="spotlight-footer">
-<button type="submit" tabindex="3" class="btn btn-primary">Post Message</button>
-</div>
 
 </div>
-
-</div>
-
-</form>
 </div>
 {% endblock %}
 

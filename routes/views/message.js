@@ -11,25 +11,39 @@ module.exports = function(req, res) {
 //made page to leave posts on
  locals.section = 'board';
 
+//?
+ locals.filters = {
+   message: req.params.message
+ };
+
  // Load the message
  view.on('init', function(next) {
 
-   Message.model.findOne().where('author').ne(null).exec(function(err, message){
-     if(err) {
-       return res.err(err);
-     }
-     if(!message){
-       return res.notfound('We could not find what you were looking for');
-     }
-     locals.message = message;
-     next();
+   Message.model.findOne().where('slug', locals.filters.message).exec(function(err, message){
+    if(err) {
+      return res.err(err);
+    }
+    if(!message) {
+      return res.notfound('Message not found');
+    }
    });
 
  });
 
+ //load other messages
+ //this may be more efficient method
+ view.query('data.messages',
+		Message.model.find()
+			.where('state', 'published')
+			.sort('-publishedDate')
+			.populate('author')
+			.limit('5')
+	);
+
 //delete message
 //which is just archiving it, so its still there in db but not displayed
- view.on('get', { remove: 'message' }, function(next) {
+//uncomment after the delete button is made in the view
+ /*view.on('get', { remove: 'message' }, function(next) {
 
    if(!req.user) {
      req.flash('Error: you must be signed in to remove a message');
@@ -63,7 +77,7 @@ module.exports = function(req, res) {
   });
 
 
- });
+});*/
 
 //like the maker page in domo maker
  view.render('site/message');

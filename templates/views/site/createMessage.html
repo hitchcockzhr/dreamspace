@@ -6,7 +6,7 @@
 <div class="container">
 <!--enctype attribute can only be used with POST methods-->
 <!--says how form data should be encoded when submitted to the server-->
-<form method="post" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate" class="form-horizontal create-form profile-form">
+<form method="post" autocomplete="off" novalidate="novalidate" class="form-horizontal create-form profile-form">
 <input type="hidden" name="action" value="create-message">
 
 <div class="row">
@@ -21,7 +21,7 @@
 
 <div class="form-group">
 <!--BootStrap WYSIWYG is a pre-sized form to enter text-->
-<textarea name="content" class="wysiwyg"> <!--how do we do input faded style like above?-->
+<textarea name="content" placeholder="Say What?"> <!--how do we do input faded style like above?-->
 </div>
 
 <div class="form-group">
@@ -38,3 +38,5 @@
 </div>
 </div>
 {% endblock %}
+
+<!--possible Javascript to do-->
