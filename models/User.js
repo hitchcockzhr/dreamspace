@@ -9,14 +9,12 @@ var Types = keystone.Field.Types;
  * ==========
  */
 
+//autokey is disabled for now
+//what it did: generates a key for the document upon saving, based on the value of another field/path
+//in this case, 'name'
 var User = new keystone.List('User', {
-	autokey: {path: 'key', from: 'name', unique: true}
+	autokey: { path: 'key', from: 'name', unique: true }
 });
-
-//var iterations = 10000;
-//var saltLength = 64;
-//var keyLength = 64;
-
 
 User.add({
 	//should I have a pre-save hook on roles to modify all affected colletions?
@@ -33,9 +31,10 @@ User.add({
 /**
 *   Pre-Save
 */
-User.schema.pre('save', function(next){
+
+/*User.schema.pre('save', function(next){
 	var member = this;
-});
+});*/
 
 
 

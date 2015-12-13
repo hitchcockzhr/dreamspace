@@ -58,6 +58,6 @@ module.exports = function(req, res) {
 
   });
 
-  view.render('site/createMessage');
+  view.render('create_message');
 
 };

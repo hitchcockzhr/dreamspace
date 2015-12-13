@@ -80,6 +80,6 @@ module.exports = function(req, res) {
 });*/
 
 //like the maker page in domo maker
- view.render('site/message');
+ view.render('message');
 
 }

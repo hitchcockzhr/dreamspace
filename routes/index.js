@@ -76,7 +76,9 @@ app.get('/signout', routes.views.signout);
 //Now let's see if this works
 app.all('/gallery*', middleware.requireUser);
 app.all('/gallery', routes.views.gallery); //used to be a regular get
-app.all('/gallery/create/message', routes.views.createMessage);
+
+//try this one out
+app.all('/create_message', routes.views.create_message);
 
 //API for the app
 

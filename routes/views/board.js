@@ -35,6 +35,6 @@ module.exports = function(req, res) {
 
   });
 
-  view.render('site/board');
+  view.render('board');
 
 }
