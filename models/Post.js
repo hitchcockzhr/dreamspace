@@ -31,7 +31,7 @@ Post.schema.virtual('content.full').get(function() {
 });
 
 // Relationship to comments
-Post.relationship({ ref: 'PostComment', refPath: 'post', path: 'comments' });
+//Post.relationship({ ref: 'PostComment', refPath: 'post', path: 'comments' });
 
 Post.defaultSort = '-publishedDate'; //why was this not here by default?
 Post.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';

@@ -15,7 +15,6 @@ exports.initLocals = function(req, res, next) {
 	locals.navLinks = [
 		{ label: 'Home',		key: 'home',		href: '/' },
 		{ label: 'Blog',		key: 'blog',		href: '/blog' },
-		{ label: 'Board',		key: 'board',		href: '/board' }, //Shoutbox needs new name
 		//{ label: 'Gallery',		key: 'gallery',		href: '/gallery' },
 		{label: 'Join', key: 'join', href: '/join'}
 	];

@@ -1,7 +1,7 @@
 //Keystone Generated
 var keystone = require('keystone');
 var async = require('async');
-var PostComment = keystone.list('PostComment');
+//var PostComment = keystone.list('PostComment');
 
 //actually used to work with exports = moduleDOTexports
 module.exports = function(req, res) {
@@ -49,7 +49,7 @@ module.exports = function(req, res) {
 
 
 //Load a comment
-view.on('init', function(next){
+/*view.on('init', function(next){
 	PostComment.model.find().where('post', locals.post).where('cmState', 'published').where('author').ne(null).populate('author').sort('-cmDate').exec(function (err, comments) {
 		if(err){
 			return res.err(err);
@@ -60,13 +60,13 @@ view.on('init', function(next){
 		locals.comments = comments;
 		next();
 	});
-});
+});*/
 
 	//Create a comment
 	//we need to use an update handler
 	//inspired by:
 	// https://gist.github.com/JedWatson/9741171
-	view.on('post', { action: 'create-comment' }, function(next) {
+	/*view.on('post', { action: 'create-comment' }, function(next) {
 
 		// handle form
 		var newPostComment = new PostComment.model({
@@ -94,7 +94,7 @@ view.on('init', function(next){
 			next();
 		});
 
-	});
+	});*/
 
 	// Render the view
 	view.render('post');

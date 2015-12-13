@@ -49,11 +49,6 @@ module.exports = function(app) {
 	//app.get('/blog/post/:post', routes.views.post); //check with plog and projects
 	app.get('/blog/post/:post', routes.views.post);
 
-  app.get('/board', routes.views.board);
-	app.get('/board/:tagg?', routes.views.board);
-	app.all('/board/message/:message', routes.views.message);
-
-
 
 	//app.get('/firstsign', routes.views.signuppage); //also try firstsign
 	//app.get('/newpage', middleware.requiresLogin, routes.views.reference);
@@ -80,7 +75,7 @@ app.all('/gallery*', middleware.requireUser);
 app.all('/gallery', routes.views.gallery); //used to be a regular get
 
 //try this one out
-app.all('/create_message', routes.views.create_message);
+//app.all('/create_message', routes.views.create_message);
 
 //API for the app
 
