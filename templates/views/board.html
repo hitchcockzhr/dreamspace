@@ -1,5 +1,6 @@
 <!--it's like the maker page in Domo Maker-->
 <!--add some pretty and unique stuff to it once it works-->
+{% extends "templates/layouts/default.html" %}
 
 <!--could be made as separate mixin and then called-->
 <!--do we want to save space in each file, or accept having more files?-->
@@ -35,6 +36,8 @@
     <div class="board"> <!--check the RESULTS-->
       {% for message in data.messages %} {{ seeMessage(message) }} {% endfor %}
     </div>
+		{% else %}
+		<h3 class="text-muted">No Messages Yet</h3>
   {% endif %}
 </div>
 </div>

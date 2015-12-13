@@ -38,7 +38,8 @@ keystone.set('locals', {
 keystone.set('routes', require('./routes'));
 
 keystone.set('nav', {
-	'posts': ['posts', 'post-categories'],
+	'posts': ['posts', 'post-comments', 'post-categories'], //this enables the comment and category feature for the post service
+	'messages': 'messages',
 	'galleries': 'galleries',
 	'users': 'users'
 });

@@ -9,7 +9,7 @@ module.exports = function(req, res) {
   var locals = res.locals;
 
   //made page to leave posts on
-  locals.section = 'gallery'; //check this
+  locals.section = 'new-message'; //check this
   locals.title = 'Leave a message';
 
   //think about the topic of the message
@@ -46,7 +46,7 @@ module.exports = function(req, res) {
        locals.validationErrors = err.errors;
        //return next(); //nothing else to go on next
      } else {
-       newMessage.notifyAdmins();
+       //newMessage.notifyAdmins(); //this may not work for the time being
        req.flash('success', 'Your message has been added' + ((newMessage.state == 'published')) + '.');
        return res.redirect('/board/message/' + newMessage.slug); //slug or key?
      }

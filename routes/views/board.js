@@ -10,30 +10,23 @@ module.exports = function(req, res) {
   var locals = res.locals;
 
   locals.section = 'board';
+  locals.page.title = 'Shoutbox';
 
-  //Let's query those MessageSSSSSSSSSSSSSS!
-  //Paginate function displays content with minimal styling
-  var messageQuery = Message.paginate({
-    page: req.query.page || 1,
-    perPage: 10,
-    maxPages: 5
-  }).where('state', 'published').where('author').ne(null);
+  locals.data = {
+    messages: []
+  };
 
-// Run the message query on 'render'
-//split up the code and make it neater than how
-//it is presented in the default blog
-  view.on('render', function(next){
-    messageQuery.exec(function(err, messages){
-      if(err){
-        res.err('Sorry, there was an error loading messages');
-      }
-      else{
-        locals.messages = messages;
-        next();
-      }
-    });
+  // Load the messages
+	view.on('init', function(next) {
 
-  });
+		var q = keystone.list('Message').model.find().where('state', 'published').sort('-publishedDate');
+
+		q.exec(function(err, results) {
+			locals.data.messages = results;
+			next(err);
+		});
+
+	});
 
   view.render('board');
 

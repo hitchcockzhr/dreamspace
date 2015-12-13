@@ -5,7 +5,7 @@
 {% block content %}
 <!--we can also fit the JOIN functionality in here, based off of the form action-->
 <!--worst case scenario, just move the below code into a separate file-->
-<div class="bodyForm">
+
 <form method="post" role="join" novalidate="novalidate" class="join-form">
 <input type="hidden" name="action" value="join">
 <div class="form-control-box">
@@ -22,7 +22,6 @@
 <label for="join-passwordConfirm" class="sr-only">Confirm Password</label>
 <input type="password" name="join_passwordConfirm" placeholder="Confirm Password" id="signin-passwordConfirm" value="" class="form-control">
 
-</div>
 </div>
 
 <button type="submit" class="btn btn-block btn-submit">Join</button>

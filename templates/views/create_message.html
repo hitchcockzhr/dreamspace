@@ -21,7 +21,8 @@
 
 <div class="form-group">
 <!--BootStrap WYSIWYG is a pre-sized form to enter text-->
-<textarea name="content" placeholder="Say What?"> <!--how do we do input faded style like above?-->
+<label>Message content</label>
+<textarea name="content" placeholder="Say What?" class="input input-faded"> <!--how do we do input faded style like above?-->
 
 </textarea>
 </div>
@@ -42,3 +43,6 @@
 {% endblock %}
 
 <!--possible Javascript to do-->
+{% block js %}
+<script src="/js/bootstrap/button.js"></script>
+{% endblock %}
