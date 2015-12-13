@@ -16,6 +16,10 @@
   {% if message.publishedDate %}
     on {{ message._.publishedDate.format("MMMM Do, YYYY") }}
   {% endif %}
+  {% if message.taggs and message.taggs.length %}
+    in
+    {% for t in message.taggs %}<a href="/board/{{ t.key }}">{{ t.name }}</a>{% if loop.index < message.taggs.length %}, {% endif %}{% endfor %}
+          {% endif %}
   {% if message.author %}
     by {{ message.author.name.first }}
   {% endif %}

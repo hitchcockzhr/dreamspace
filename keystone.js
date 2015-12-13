@@ -39,7 +39,7 @@ keystone.set('routes', require('./routes'));
 
 keystone.set('nav', {
 	'posts': ['posts', 'post-comments', 'post-categories'], //this enables the comment and category feature for the post service
-	'messages': 'messages',
+	'messages': ['messages', 'message-taggs'],
 	'galleries': 'galleries',
 	'users': 'users'
 });

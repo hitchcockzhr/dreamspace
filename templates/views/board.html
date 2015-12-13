@@ -14,6 +14,9 @@
 		{% if message.publishedDate %}
 			<br>on {{ message._.publishedDate.format("MMMM Do, YYYY") }}
 		{% endif %}
+		{% if message.taggs and message.taggs.length %}
+			<br>in {% for t in message.taggs %}<a href="/board/{{ t.key }}">{{ t.name }}</a>{% if loop.index < message.taggs.length %}, {% endif %}{% endfor %}
+		{% endif %}
 		{% if message.author %}
 			<br>by {{ message.author.name.first }}
 		{% endif %}
@@ -24,21 +27,47 @@
 
 {% block intro %}
 <div class="container">
-	<h1>Shout Box</h1>
+	{% set title = ( data.message.name if data.tagg else "Blog" ) %}
+	<h1>{{ title }}</h1>
 </div>
 {% endblock %}
 
 <!--think of some better design, as well-->
+<!--check the RESULTS-->
 {% block content %}
 <div class="container">
 <div class="row">
-  {% if data.messages.length %}
-    <div class="board"> <!--check the RESULTS-->
-      {% for message in data.messages %} {{ seeMessage(message) }} {% endfor %}
-    </div>
+	<div class="col-sm-8 col-md-9">
+		{% if filters.tagg and not data.tagg %}
+			<h3 class="text-muted">Invalid Tag.</h3>
 		{% else %}
-		<h3 class="text-muted">No Messages Yet</h3>
-  {% endif %}
+			{% if data.messages.length %}
+				<div class="board">
+					{% for message in data.messages %} {{ seeMessage(message) }} {% endfor %}
+				</div>
+			{% else %}
+				{% if data.tagg %}
+					<h3 class="text-muted">There are no posts with the tag {{ data.tagg.name }}.</h3>
+				{% else %}
+					<h3 class="text-muted">There are no posts yet.</h3>
+				{% endif %}
+			{% endif %}
+		{% endif %}
+</div>
+
+{% if data.taggs.length %}
+	<div class="col-md-2">
+		<h2>Tags</h2>
+		<div class="list-group" style="margin-top: 70px;">
+			{% set class = ( "active" if not data.tagg else "" ) %}
+			<a href="/board" class="{{ class }} list-group-item">All Tags</a>
+			{% for t in data.taggs %} {% set class = ( "active" if data.tagg and data.tagg.id == t.id else "" ) %}
+				<a href="/board/{{ t.key }}" class="{{ class }} list-group-item">{{ t.name }}</a>
+			{% endfor %}
+		</div>
+	</div>
+{% endif %}
+
 </div>
 </div>
 {% endblock %}

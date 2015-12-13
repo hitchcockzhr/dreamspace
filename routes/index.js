@@ -49,8 +49,9 @@ module.exports = function(app) {
 	//app.get('/blog/post/:post', routes.views.post); //check with plog and projects
 	app.get('/blog/post/:post', routes.views.post);
 
-  app.get('/board/:board', routes.views.board);
-	app.get('/board/message/:message', routes.views.message);
+  app.get('/board', routes.views.board);
+	app.get('/board/:tagg?', routes.views.board);
+	app.all('/board/message/:message', routes.views.message);
 
 
 

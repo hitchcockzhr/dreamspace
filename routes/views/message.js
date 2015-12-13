@@ -1,6 +1,6 @@
 var keystone = require('keystone');
-var _ = require('underscore');
-var User = keystone.list('User');
+//var _ = require('underscore');
+//var User = keystone.list('User');
 var Message = keystone.list('Message');
 
 module.exports = function(req, res) {
@@ -19,7 +19,7 @@ module.exports = function(req, res) {
  // Load the message
  view.on('init', function(next) {
 
-   Message.model.findOne().where('slug', locals.filters.message).exec(function(err, message){
+   Message.model.findOne().where('slug', locals.filters.message).populate('author taggs').exec(function(err, message){
     if(err) {
       return res.err(err);
     }
