@@ -11,7 +11,7 @@ npm install -g generator-keystone
 COOKIE_SECRET=wTUnbxw:FT%!vMBA.6m/kfmX(Ena5!2iJeTS)8gH^4VGUd%fx[vQV@+e,;2]yATq
 CLOUDINARY_URL=cloudinary://936669194473599:sEYtaWP3amXS3_FsXDTZgnuvZ2Q@db1wgqtps
 6. To run: nodemon keystone.js (or node keystone for those without nodemon)
-7. Also check out the Heroku link: --------
+7. Also check out the Heroku link: http://portfolio-ni.herokuapp.com/
 
 #  How does it work?
 Keystone JS is a Model-View-Controller framework that is open source and very powerful. When running the generator from the terminal, 
@@ -46,5 +46,5 @@ can still take in whatever methods you want. Sometimes it is just better to have
 4. Multiuser components took longer than expected. The framework does not natively support user content made from the front-end.
 5. Because of this, I tried to add too many things at the last minute, personally feeling the site was too small.
 6. A lot of hours went into trying various methods for some functions, and reading up on Mongoose. I feel that I took to long to figure some stuff out
-7. Original project definition, which changed a little over time: -----
+7. Original project definition, which changed a little over time: http://people.rit.edu/nai7804/project_REDO/design.html
 8. If you read this far down, you get a cookie :)
