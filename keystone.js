@@ -20,8 +20,9 @@ keystone.init({
 	'custom engine': cons.nunjucks,
 
 	'auto update': true,
-	'mongo': process.env.MONGO_URI || 'mongodb://localhost/' + pkg.name,
+	'mongo': process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/dreamspace',
 	'session': true,
+	'session store': 'connect-mongo',
 	'auth': true,
 	'user model': 'User'
 
