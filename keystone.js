@@ -20,6 +20,7 @@ keystone.init({
 	'custom engine': cons.nunjucks,
 
 	'auto update': true,
+	'mongo': process.env.MONGO_URI || 'mongodb://localhost/' + pkg.name,
 	'session': true,
 	'auth': true,
 	'user model': 'User'
