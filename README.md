@@ -1,5 +1,5 @@
 # dreamspace
-Multiuser Portfolio website, powered by Keystone JS
+Multiuser Portfolio website, powered by Keystone JS (updated 12-14-15 16:50)
 
 #  How to run:
 1. Make sure NodeJS and MongoDB are installed
@@ -22,6 +22,8 @@ the models to have a nested set pattern. Multiple content blocks can be added to
 file for neatness.
 Models can also take relationships to other models. So, a Post could have Comments and Categories, a Page can have content blocks, ect. 
 Some models need to take other models in, because they will be displayed together on the front-end.
+In this demo, a user can sign up and log in, and make posts that are added to the blog. The admin user can make posts from the Admin UI, but 
+authenticated users can only make posts from the front-end of the site. Posts can also be shared via social media.
 
 #  Keystone lists are mongoose schemas
 That pharase is pretty self-explanatory. They have all the same methods, too.
@@ -38,13 +40,19 @@ can still take in whatever methods you want. Sometimes it is just better to have
 4. Bootstrap for forms and some styling
 5. The Async library of methods
 6. .SASS styles
+7. Connect-Mongo, which handles session store for Express
+8. Npm Debug for a little content block testing
+9. Npm Passport, to authenticate requests
+10. Every other dependency comes with Keystone
 
 #  Post-Mortem
-1. Tride Post Comments (as well as delete) and failed. The comments crashed the site. The code for the models (and code in routes/views/post) is still there to return to one day.
+1. Tried Post Comments (as well as delete) and failed. The comments crashed the site. The code for the models (and code in routes/views/post) is still there to return to one day.
 2. Page inheritance did not work as planned (e.g. Homepage inheriting from Basepage). Home attributes won't render for some reason.
 3. Send emails to admin when user makes content: commented out (check Post model). Blog would crash upon clicking on a post.
 4. Multiuser components took longer than expected. The framework does not natively support user content made from the front-end.
 5. Because of this, I tried to add too many things at the last minute, personally feeling the site was too small.
 6. A lot of hours went into trying various methods for some functions, and reading up on Mongoose. I feel that I took to long to figure some stuff out
 7. Original project definition, which changed a little over time: http://people.rit.edu/nai7804/project_REDO/design.html
-8. If you read this far down, you get a cookie :)
+8. I learned a lot about many areas of the web stack: task watching, popular packages, ways to template, and writing middleware. It was quite a process.
+9. I would do this type of thing again, but starting with a more clear and focused goal. And I took deployment for granted: not as simple as it seemed.
+10. If you read this far down, you get a cookie :)
