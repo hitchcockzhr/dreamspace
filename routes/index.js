@@ -43,7 +43,7 @@ module.exports = function(app) {
 	//app.post("/login", middleware.requiresSecure, mid.requiresLogout, controllers.Account.login);, AND middleware.requiresUser
 
   //Website
-  app.get('/', routes.views.home); //no longer 'index'
+  app.get('/', routes.views.home); //no longer 'index', test new routings
 	app.get('/blog/:category?', routes.views.blog);
 	//app.get('/projects', routes.views.projPage);
 	//app.get('/blog/post/:post', routes.views.post); //check with plog and projects
