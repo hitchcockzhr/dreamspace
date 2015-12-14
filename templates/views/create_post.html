@@ -6,8 +6,8 @@
 <div class="container">
 <!--enctype attribute can only be used with POST methods-->
 <!--says how form data should be encoded when submitted to the server-->
-<form method="post" autocomplete="off" novalidate="novalidate" class="form-horizontal create-form profile-form">
-<input type="hidden" name="action" value="create-message">
+<form method="post" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate" class="form-horizontal create-form profile-form">
+<input type="hidden" name="action" value="create-post">
 
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
@@ -15,20 +15,25 @@
 <div class="form-group">
 <h1>Leave me a Post!</h1>
 
-<input type="text" id="message-title" name="title" placeholder="Title" class="input input-xl input-faded">
+<input type="text" id="post-title" name="title" placeholder="Title" class="input input-xl input-faded">
 
 </div>
 
 <div class="form-group">
+<label>Upload Image</label>
+<input type="file" name="image_upload">
+</div>
+
+<div class="form-group">
 <!--BootStrap WYSIWYG is a pre-sized form to enter text-->
-<label>Message content</label>
-<textarea name="content" placeholder="Say What?" class="input input-faded"> <!--how do we do input faded style like above?-->
+<label>Post content</label>
+<textarea name="content" placeholder="Say What?" class="input input-faded">
 
 </textarea>
 </div>
 
 <div class="form-group">
-<button type="submit" class="btn btn-lg btn-primary btn-block">Leave Message</button>
+<button type="submit" class="btn btn-lg btn-primary btn-block">Post!</button>
 </div>
 
   </div>
@@ -43,6 +48,3 @@
 {% endblock %}
 
 <!--possible Javascript to do-->
-{% block js %}
-<script src="/js/bootstrap/button.js"></script>
-{% endblock %}

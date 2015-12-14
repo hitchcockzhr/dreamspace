@@ -75,7 +75,7 @@ app.all('/gallery*', middleware.requireUser);
 app.all('/gallery', routes.views.gallery); //used to be a regular get
 
 //try this one out
-//app.all('/create_message', routes.views.create_message);
+app.all('/create_post', routes.views.create_post);
 
 //API for the app
 

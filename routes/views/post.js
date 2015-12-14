@@ -1,6 +1,6 @@
 //Keystone Generated
 var keystone = require('keystone');
-var async = require('async');
+//var async = require('async');
 //var PostComment = keystone.list('PostComment');
 
 //actually used to work with exports = moduleDOTexports
