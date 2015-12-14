@@ -48,6 +48,7 @@ module.exports = function(app) {
 	//app.get('/projects', routes.views.projPage);
 	//app.get('/blog/post/:post', routes.views.post); //check with plog and projects
 	app.get('/blog/post/:post', routes.views.post);
+	//app.get('/contactme', routes.views.contactme);
 
 
 	//app.get('/firstsign', routes.views.signuppage); //also try firstsign

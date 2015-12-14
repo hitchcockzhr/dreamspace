@@ -7,23 +7,25 @@
 {% block content %}
 
 		<div class="container"> <!--originally "jumbotron"-->
-			<div class="col">
-			<img src="/images/logo.svg" width="160"> <!--make better logo-->
-			<h1>{{page.intro.title}}</h1>
-			{% if page.intro.image.exists %}
-      <a href="{{page.intro.link}}"><img src="{{page.intro.image.href}}" alt="{{page.intro.linkText}}"></a>
-			{% endif %}
 
-      <!--more stuff, and do good styles-->
+		<p>This is "Dreamspace", my interactive portofolio site! </p>
+		<p>This homepage is stubbed out for now, need to like very nice!</p>
+		<p>You can sign up or log in to join the conversation!</p>
 
-			<!--<p>This is "Dreamspace", my interactive portofolio site! </p>
-			<p>This homepage is stubbed out for now, need to like very nice!</p>
-			<p>You can sign up or log in to join the conversation!</p>-->
+		<div class="col">
+		<img src="/images/logo.svg" width="160"> <!--make better logo-->
+		<h1>{{page.intro.title}}</h1>
+		{% if page.intro.image.exists %}
+		<a href="{{page.intro.link}}"><img src="{{page.intro.image.href}}" alt="{{page.intro.linkText}}"></a>
+		{% endif %}
 
-			<h5><a href="{{ page.intro.link }}">{{ page.intro.linkText }}</a></h5>
-			<p>{{ page.intro.description }}</p>
-			<a href="{{ page.intro.link }}" class="btn">Read More</a>
-		</div>
+		<!--more stuff, and do good styles-->
+
+		<h5><a href="{{ page.intro.link }}">{{ page.intro.linkText }}</a></h5>
+		<p>{{ page.intro.description }}</p>
+		<a href="{{ page.intro.link }}" class="btn">Read More</a>
+	</div>
+
 		</div>
 
 {% endblock %}

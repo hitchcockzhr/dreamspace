@@ -13,10 +13,13 @@ exports.initLocals = function(req, res, next) {
 //can add any page at any time
 //remember to put projects back in later
 	locals.navLinks = [
-		{ label: 'Home',		key: 'home',		href: '/the-home' }, //lol?
+		{ label: 'Home',		key: 'home',		href: '/' }, //lol?
 		{ label: 'Blog',		key: 'blog',		href: '/blog' },
 		//{ label: 'Gallery',		key: 'gallery',		href: '/gallery' },
-		{label: 'Join', key: 'join', href: '/join'}
+		{label: 'Join', key: 'join', href: '/join'},
+		{label: 'Projects', key: 'projects', href: '/projects'},
+		{label: 'Work', key: 'work', href: '/work'},
+		{label: 'Programming', key: 'programming', href: '/programming'}
 	];
 
 	locals.user = req.user;

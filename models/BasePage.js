@@ -25,6 +25,7 @@ BasePage.add({
     publishedDate: { type: Types.Datetime, index: true, default: Date.now, dependsOn: { state: 'published' } },
     metaDescription: { type: String, collapse: true },
     metaKeywords: { type: String, collapse: true },
+    alert: {type: Types.Boolean, initial: false}
 });
 
 BasePage.add(
