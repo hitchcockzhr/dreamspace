@@ -13,7 +13,7 @@ keystone.init({
 	'brand': 'Dreamspace',
 
 	'sass': 'public',
-	'static': 'public',
+	'static': ['public', 'data/uploads'], //for files
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'html',
